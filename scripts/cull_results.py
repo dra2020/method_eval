@@ -29,14 +29,14 @@ try:
     with open(in_path, "r") as f:
         data = json.load(f)
 
-    row = {}
-    row["xx"] = args.state
-    row["year"] = args.year
-    row["election"] = args.election
-    row["statewide"] = data["statewide"]
-    row["n"] = len(data["byDistrict"])
+    xx = args.state
+    year = args.year
+    election = args.election
+    statewide = data["statewide"]
+    n = len(data["byDistrict"])
 
-    print(row)
+    print("{}, {}, {}, {}".format("xx", "year", "election", "n"))
+    print("{}, {}, {}, {}".format(xx, year, election, n))
 
     # out_path = args.state + args.year + "-" + args.election + "-profile.json"
     # with open(out_path, "w") as f:

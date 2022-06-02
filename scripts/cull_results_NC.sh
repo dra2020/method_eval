@@ -11,13 +11,13 @@ echo
 cd data
 cd NC
 
-../../scripts/cull_results.py NC 2022 composite
-# ../../scripts/make_profile.py NC 2022 P2020
-# ../../scripts/make_profile.py NC 2022 P2016
-# ../../scripts/make_profile.py NC 2022 S2020
-# ../../scripts/make_profile.py NC 2022 S2016
-# ../../scripts/make_profile.py NC 2022 G2020
-# ../../scripts/make_profile.py NC 2022 AG2020
+../../scripts/cull_results.py NC 2022 composite -v
+../../scripts/cull_results.py NC 2022 P2020
+../../scripts/cull_results.py NC 2022 P2016
+../../scripts/cull_results.py NC 2022 S2020
+../../scripts/cull_results.py NC 2022 S2016
+../../scripts/cull_results.py NC 2022 G2020
+../../scripts/cull_results.py NC 2022 AG2020
 
 cd ../..
 

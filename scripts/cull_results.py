@@ -50,21 +50,21 @@ try:
     """
     Metrics (from dra-analytics):
 
-    * bestS = the Democratic seats closest to proportional
-    * fptpS = the estimated number of Democratic seats using first past the post
-    * estS = the estimated Democratic seats, using seat probabilities
+    * S_V = the estimated Democratic seats, using seat probabilities
+    * FPTP = the estimated number of Democratic seats using first past the post
+    * PR = the Democratic seats closest to proportional
 
-    * bS50 = Seat bias as a fraction of N
-    * bV50 = Votes bias as a fraction
-    * decl = Declination
-    * gSym = Global symmetry
+    * BS_50 = Seat bias as a fraction of N
+    * BV_50 = Votes bias as a fraction
+    * DECL = Declination
+    * GS = Global symmetry
 
     * EG = Efficiency gap as a fraction
-    * bSV = Seats bias @ <V> (geometric)
-    * prop = Disproportionality
-    * mMs = Mean – median difference using statewide Vf
-    * tOf = Turnout bias
-    * mMd = Mean – median difference using average district v 
+    * BS_V = Seats bias @ <V> (geometric)
+    * PROP = Disproportionality
+    * MM = Mean – median difference using statewide Vf
+    * TO = Turnout bias
+    * MM' = Mean – median difference using average district v 
     * LO = Lopsided outcomes
 
     """
@@ -86,45 +86,78 @@ try:
     mMd = s["bias"]["mMd"]
     lO = s["bias"]["lO"]
 
+    # Add +/– 2% bracketing S(V) points
+
+    # For Vf = 0.4873, [0.485, 0.490] => [0.465, 0.510]
+    # For Vf = 0.4833, [0.480, 0.485] => [0.460, 0.505]
+
+    t = 0.005
+    base = round(Vf, 2)
+    lower = base if base < Vf else base - t
+    upper = base + t if base < Vf else base
+
+    margin = 0.02
+    lower = max(round(lower - margin, 3), 0.25)
+    upper = min(round(upper + margin, 3), 0.75)
+
+    epsilon = 1.0e-12
+
+    lower_Vf = None
+    lower_Sf = None
+    upper_Vf = None
+    upper_Sf = None
+
+    for i, pt in enumerate(s["dSVpoints"]):
+        if abs(pt["v"] - lower) < epsilon:
+            lower_Vf = pt["v"]
+            lower_Sf = pt["s"]
+        if abs(pt["v"] - upper) < epsilon:
+            upper_Vf = pt["v"]
+            upper_Sf = pt["s"]
+
     # Append row
 
     out_path = args.state + args.year + "-elections-analysis.csv"
     with open(out_path, "a") as f:
         if verbose:
             print(
-                "{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(
-                    "xx",
-                    "year",
-                    "election",
-                    "n",
+                "{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(
+                    "XX",
+                    "YEAR",
+                    "ELECTION",
+                    "CD",
                     "Vf",
-                    "estS",
-                    "bestS",
-                    "fptpS",
-                    "bS50",
-                    "bV50",
-                    "decl",
-                    "gSym",
+                    "S_V",
+                    "FPTP",
+                    "PR",
+                    "BS_50",
+                    "BV_50",
+                    "DECL",
+                    "GS",
                     "EG",
-                    "bSV",
-                    "prop",
-                    "mMs",
-                    "tOf",
-                    "mMd",
+                    "BS_V",
+                    "PROP",
+                    "MM",
+                    "TO",
+                    "MM'",
                     "LO",
+                    "L_Vf",
+                    "L_Sf",
+                    "U_Vf",
+                    "U_Sf",
                 ),
                 file=f,
             )
         print(
-            "{}, {}, {}, {}, {:.6f}, {:.6f}, {}, {}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f},".format(
+            "{}, {}, {}, {}, {:.6f}, {:.6f}, {}, {}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}".format(
                 xx,
                 year,
                 election,
                 n,
                 Vf,
                 estS,
-                bestS,
                 fptpS,
+                bestS,
                 bS50,
                 bV50,
                 decl,
@@ -136,10 +169,13 @@ try:
                 tOf,
                 mMd,
                 lO,
+                lower_Vf,
+                lower_Sf,
+                upper_Vf,
+                upper_Sf,
             ),
             file=f,
         )
-
 
 except:
     raise Exception("Exception reading JSON file")

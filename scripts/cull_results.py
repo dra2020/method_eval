@@ -141,6 +141,15 @@ try:
             upper_Vf = pt["v"]
             upper_Sf = pt["s"]
 
+    # Write the S(V) points to a file
+
+    out_path = args.state + args.year + "-" + args.election + "-svpoints.csv"
+    with open(out_path, "w") as f:
+        print("Vf, Sf", file=f)
+
+        for pt in s["dSVpoints"]:
+            print("{:.3f}, {:.6f}".format(pt["v"], pt["s"]), file=f)
+
     # Append row to file
 
     out_path = args.state + args.year + "-elections-analysis.csv"

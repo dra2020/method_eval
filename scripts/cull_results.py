@@ -75,7 +75,7 @@ try:
     * LO = Lopsided outcomes
 
     * BIG_R = Overall responsiveness or winner’s bonus 
-    * LIL_R = The point responsiveness at Vf (the slope of the S(V) curve at Vf)
+    * LIL_R = The point responsiveness at Vf, i.e., the slope of the S(V) curve at Vf
     * R_V = the estimated responsive districts, using seat probabilities
 
     * L_Vf = the D vote share of the inferred S(V) point ~2.0% below Vf

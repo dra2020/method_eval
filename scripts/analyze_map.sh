@@ -6,7 +6,7 @@
 # $ scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018
 #
 # $ scripts/analyze_map.sh AZ 2022 P2020 P2016 S2020 S2018 G2018 AG2018
-# $ scripts/analyze_map.sh CA 2022 P2020 P2016 S2020 S2018 G2018 AG2018
+# $ scripts/analyze_map.sh CA 2022 P2020 P2016 S20xx S20xx G2018 AG2018 <<< ???
 #
 # $ scripts/analyze_map.sh NC 2022 P2020 P2016 S2020 S2016 G2020 AG2020
 

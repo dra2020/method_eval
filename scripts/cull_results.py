@@ -7,6 +7,42 @@ For example:
 
 $ scripts/cull_results.py NC 2022 composite
 
+
+Columns in elections file:
+
+* XX = the two-character state abbreviation
+* YEAR = the four-digit year for the map (e.g., 2022)
+* CD = the # of congressional districts
+
+* ELECTION = abbreviation of the election dataset
+* Vf = the statewide D vote share
+
+* S_V = the estimated D seats, using seat probabilities
+* FPTP = the estimated # of D seats using first past the post
+* PR = the D seats closest to proportional
+
+* BS_50 = Seat bias as a fraction of CD
+* BV_50 = Votes bias as a fraction
+* DECL = Declination
+* GS = Global symmetry
+
+* EG = Efficiency gap as a fraction
+* BS_V = Seats bias @ Vf (geometric)
+* PROP = Disproportionality
+* MM = Mean – median difference using statewide Vf
+* TO = Turnout bias
+* MM' = Mean – median difference using average district v 
+* LO = Lopsided outcomes
+
+* BIG_R = Overall responsiveness or winner’s bonus 
+* LIL_R = The point responsiveness at Vf, i.e., the slope of the S(V) curve at Vf
+* R_V = the estimated responsive districts, using seat probabilities
+
+* L_Vf = the D vote share of the inferred S(V) point ~2.0% below Vf
+* L_Sf = the corresponding D seat share
+* U_Vf = the D vote share of the inferred S(V) point ~2.0% above Vf
+* U_Sf = the corresponding D seat share
+
 """
 
 import json
@@ -46,44 +82,6 @@ try:
     in_path = args.state + args.year + "-" + args.election + "-scorecard.json"
     with open(in_path, "r") as f:
         s = json.load(f)
-
-    """
-    Columns:
-
-    * XX = the two-character state abbreviation
-    * YEAR = the four-digit year for the map (e.g., 2022)
-    * CD = the # of congressional districts
-
-    * ELECTION = abbreviation of the election dataset
-    * Vf = the statewide D vote share
-
-    * S_V = the estimated D seats, using seat probabilities
-    * FPTP = the estimated # of D seats using first past the post
-    * PR = the D seats closest to proportional
-
-    * BS_50 = Seat bias as a fraction of CD
-    * BV_50 = Votes bias as a fraction
-    * DECL = Declination
-    * GS = Global symmetry
-
-    * EG = Efficiency gap as a fraction
-    * BS_V = Seats bias @ Vf (geometric)
-    * PROP = Disproportionality
-    * MM = Mean – median difference using statewide Vf
-    * TO = Turnout bias
-    * MM' = Mean – median difference using average district v 
-    * LO = Lopsided outcomes
-
-    * BIG_R = Overall responsiveness or winner’s bonus 
-    * LIL_R = The point responsiveness at Vf, i.e., the slope of the S(V) curve at Vf
-    * R_V = the estimated responsive districts, using seat probabilities
-
-    * L_Vf = the D vote share of the inferred S(V) point ~2.0% below Vf
-    * L_Sf = the corresponding D seat share
-    * U_Vf = the D vote share of the inferred S(V) point ~2.0% above Vf
-    * U_Sf = the corresponding D seat share
-
-    """
 
     bestS = s["bias"]["bestS"]
     fptpS = s["bias"]["fptpS"]
@@ -145,7 +143,12 @@ try:
 
     out_path = args.state + args.year + "-" + args.election + "-svpoints.csv"
     with open(out_path, "w") as f:
-        print("Vf, Sf", file=f)
+        print(
+            "{},{}".format(
+                args.state + args.year + "_" + "Vf", args.state + args.year + "_" + "Sf"
+            ),
+            file=f,
+        )
 
         for pt in s["dSVpoints"]:
             print("{:.3f}, {:.6f}".format(pt["v"], pt["s"]), file=f)

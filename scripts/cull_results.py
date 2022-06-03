@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Cull results from dra-analytics output.
+Cull per-election results from the previously generated files.
 
 For example:
 
@@ -48,9 +48,13 @@ try:
         s = json.load(f)
 
     """
-    Metrics (from dra-analytics):
+    Columns:
 
+    * XX = the two-character state abbreviation
+    * YEAR = the four-digit year for the map (e.g., 2022)
     * CD = the # of congressional districts
+
+    * ELECTION = abbreviation of the election dataset
     * Vf = the statewide D vote share
 
     * S_V = the estimated D seats, using seat probabilities

@@ -91,7 +91,9 @@ try:
 
     bS50 = s["bias"]["bS50"]
     bV50 = s["bias"]["bV50"]
-    decl = s["bias"]["decl"]
+    decl = s["bias"]["decl"] if "decl" in s["bias"] else 0
+    if "decl" not in s["bias"]:
+        print("decl is undefined")
     gSym = s["bias"]["gSym"]
 
     eG = s["bias"]["eG"]
@@ -100,7 +102,9 @@ try:
     mMs = s["bias"]["mMs"]
     tOf = s["bias"]["tOf"]
     mMd = s["bias"]["mMd"]
-    lO = s["bias"]["lO"]
+    lO = s["bias"]["lO"] if "lO" in s["bias"] else 0
+    if "lO" not in s["bias"]:
+        print("LO is undefined")
 
     # Responsiveness
 

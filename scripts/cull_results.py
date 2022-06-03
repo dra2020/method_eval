@@ -144,9 +144,7 @@ try:
     out_path = args.state + args.year + "-" + args.election + "-svpoints.csv"
     with open(out_path, "w") as f:
         print(
-            "{},{}".format(
-                args.state + args.year + "_" + "Vf", args.state + args.year + "_" + "Sf"
-            ),
+            "{},{}".format("Vf", args.election + "_" + "Sf"),
             file=f,
         )
 
@@ -159,7 +157,7 @@ try:
     with open(out_path, "a") as f:
         if verbose:
             print(
-                "{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(
+                "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}".format(
                     "XX",
                     "YEAR",
                     "ELECTION",
@@ -190,7 +188,7 @@ try:
                 file=f,
             )
         print(
-            "{}, {}, {}, {}, {:.6f}, {:.6f}, {}, {}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}, {:.6f}".format(
+            "{},{},{},{},{:.6f},{:.6f},{},{},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f}".format(
                 xx,
                 year,
                 election,

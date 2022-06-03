@@ -6,6 +6,7 @@
 # $ scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018
 #
 # $ scripts/analyze_map.sh AZ 2022 P2020 P2016 S2020 S2018 G2018 AG2018
+#
 # $ scripts/analyze_map.sh CA 2022 P2020 P2016 S20xx S20xx G2018 AG2018 <<< No Senatorial elections?
 # $ scripts/analyze_map.sh CO 2022 P2020 P2016 S2020 S2016 G2018 AG2018
 # $ scripts/analyze_map.sh CT 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< 'About Data' wrong re: P?
@@ -59,7 +60,9 @@ echo ... culling the results ...
 ../../scripts/cull_results.py $xx $yy $e5
 ../../scripts/cull_results.py $xx $yy $e6
 
-echo TODO: combine S(V) points
+echo ... combining S-V points ...
+
+paste -d "," $xx$yy-composite-svpoints.csv $xx$yy-$e1-svpoints.csv $xx$yy-$e2-svpoints.csv $xx$yy-$e3-svpoints.csv $xx$yy-$e4-svpoints.csv $xx$yy-$e5-svpoints.csv $xx$yy-$e6-svpoints.csv > $xx$yy-svpoints.csv
 
 cd ../..
 

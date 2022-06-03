@@ -151,7 +151,7 @@ try:
         )
 
         for pt in s["dSVpoints"]:
-            print("{:.3f}, {:.6f}".format(pt["v"], pt["s"]), file=f)
+            print("{:.3f},{:.6f}".format(pt["v"], pt["s"]), file=f)
 
     # Append row to file
 

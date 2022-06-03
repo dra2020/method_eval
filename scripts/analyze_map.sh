@@ -59,6 +59,8 @@ echo ... culling the results ...
 ../../scripts/cull_results.py $xx $yy $e5
 ../../scripts/cull_results.py $xx $yy $e6
 
+echo TODO: combine S(V) points
+
 cd ../..
 
 echo

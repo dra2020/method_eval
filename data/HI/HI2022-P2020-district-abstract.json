@@ -1,0 +1,80 @@
+{
+  "state": "HI",
+  "name": "Copy of HI 2022 Congressional",
+  "nDistricts": 2,
+  "nCounties": 5,
+  "bStateLeg": false,
+  "population": {
+    "byDistrict": [
+      726395,
+      728876
+    ],
+    "targetSize": 727636
+  },
+  "shapes": [
+    {
+      "area": 0.078516,
+      "perimeter": 1.50259,
+      "diameter": 0.500974
+    },
+    {
+      "area": 2.391055,
+      "perimeter": 21.672101,
+      "diameter": 25.313257
+    }
+  ],
+  "counties": [
+    [
+      0,
+      726395,
+      0,
+      0,
+      0
+    ],
+    [
+      200629,
+      290113,
+      82,
+      73298,
+      164754
+    ]
+  ],
+  "partisanship": {
+    "statewide": 0.650327,
+    "byDistrict": [
+      0.64965,
+      0.650972
+    ]
+  },
+  "demographics": {
+    "statewide": {
+      "white": 0.238449,
+      "minority": 0.761551,
+      "black": 0.02767,
+      "hispanic": 0.080549,
+      "pacific": 0.228783,
+      "asian": 0.55935,
+      "native": 0.024335
+    },
+    "byDistrict": [
+      {
+        "white": 0.160867,
+        "minority": 0.839133,
+        "black": 0.031144,
+        "hispanic": 0.066074,
+        "pacific": 0.179273,
+        "asian": 0.681221,
+        "native": 0.018717
+      },
+      {
+        "white": 0.318128,
+        "minority": 0.681872,
+        "black": 0.024102,
+        "hispanic": 0.095415,
+        "pacific": 0.27963,
+        "asian": 0.434185,
+        "native": 0.030105
+      }
+    ]
+  }
+}

@@ -5,13 +5,12 @@
 # $ scripts/analyze_map.sh AL 2022 P2020 P2016 S2020 S2017 G2018 AG2018
 # $ scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018
 # $ scripts/analyze_map.sh AZ 2022 P2020 P2016 S2020 S2018 G2018 AG2018
-#
-# $ scripts/analyze_map.sh CA 2022 P2020 P2016 S20xx S20xx G2018 AG2018 <<< No Senatorial elections?
+# $ scripts/analyze_map.sh CA 2022 P2020 P2016 S20xx S20xx G2018 AG2018 <<< TODO: No Senatorial elections?
 # $ scripts/analyze_map.sh CO 2022 P2020 P2016 S2020 S2016 G2018 AG2018
 # $ scripts/analyze_map.sh CT 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< 'About Data' wrong re: P?
 # $ scripts/analyze_map.sh FL 2022 P2020 P2016 S2018 S2016 G2018 AG2018
 # $ scripts/analyze_map.sh GA 2022 P2020 P2016 S2020 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh HI 2022 P2020 P2016 S2018 S2016 G2018        <<< No AG election!
+# $ scripts/analyze_map.sh HI 2022 P2020 P2016 S2018 S2016 G2018        <<< TODO: No AG election!
 # $ scripts/analyze_map.sh IA 2022 P2020 P2016 S2020 S2016 G2018 AG2018
 # $ scripts/analyze_map.sh ID 2022 P2020 P2016 S2020 S2016 G2018 AG2018
 # $ scripts/analyze_map.sh IL 2022 P2020 P2016 S2020 S2016 G2018 AG2018
@@ -69,7 +68,8 @@ echo ... culling the results ...
 
 echo ... combining S-V points ...
 
-paste -d "," $xx$yy-composite-svpoints.csv $xx$yy-$e1-svpoints.csv $xx$yy-$e2-svpoints.csv $xx$yy-$e3-svpoints.csv $xx$yy-$e4-svpoints.csv $xx$yy-$e5-svpoints.csv $xx$yy-$e6-svpoints.csv > $xx$yy-svpoints.csv
+paste -d "," $xx$yy-composite-SVpoints.csv $xx$yy-$e1-SVpoints.csv $xx$yy-$e2-SVpoints.csv $xx$yy-$e3-SVpoints.csv $xx$yy-$e4-SVpoints.csv $xx$yy-$e5-SVpoints.csv $xx$yy-$e6-SVpoints.csv > $xx$yy-SVpoints.csv
+paste -d "," $xx$yy-composite-RVpoints.csv $xx$yy-$e1-RVpoints.csv $xx$yy-$e2-RVpoints.csv $xx$yy-$e3-RVpoints.csv $xx$yy-$e4-RVpoints.csv $xx$yy-$e5-RVpoints.csv $xx$yy-$e6-RVpoints.csv > $xx$yy-RVpoints.csv
 
 cd ../..
 

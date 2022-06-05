@@ -139,18 +139,6 @@ try:
             upper_Vf = pt["v"]
             upper_Sf = pt["s"]
 
-    # Write the S(V) points to a file
-
-    out_path = args.state + args.year + "-" + args.election + "-svpoints.csv"
-    with open(out_path, "w") as f:
-        print(
-            "{},{}".format("Vf", args.election + "_" + "Sf"),
-            file=f,
-        )
-
-        for pt in s["dSVpoints"]:
-            print("{:.3f},{:.6f}".format(pt["v"], pt["s"]), file=f)
-
     # Append row to file
 
     out_path = args.state + args.year + "-elections-analysis.csv"
@@ -218,6 +206,32 @@ try:
             ),
             file=f,
         )
+
+    # Write the r(v) points to a file
+
+    out_path = args.state + args.year + "-" + args.election + "-RVpoints.csv"
+    with open(out_path, "w") as f:
+        print(
+            "{},{}".format("CD", args.election + "_" + "Vf"),
+            file=f,
+        )
+
+        for i, v in enumerate(p["byDistrict"]):
+            j = i + 1
+            print("{},{:.6f}".format(j, v), file=f)
+
+    # Write the S(V) points to a file
+
+    out_path = args.state + args.year + "-" + args.election + "-SVpoints.csv"
+    with open(out_path, "w") as f:
+        print(
+            "{},{}".format("Vf", args.election + "_" + "Sf"),
+            file=f,
+        )
+
+        for pt in s["dSVpoints"]:
+            print("{:.3f},{:.6f}".format(pt["v"], pt["s"]), file=f)
+
 
 except:
     raise Exception("Exception reading JSON file")

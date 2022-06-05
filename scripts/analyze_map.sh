@@ -23,7 +23,7 @@
 # $ scripts/analyze_map.sh MD 2022 P2020 P2016 S2018 S2016 G2018 AG2018
 # $ scripts/analyze_map.sh ME 2022 P2020 P2016 S2020       G2018        <<< TODO: S2018 not *'d. No AG election.
 # $ scripts/analyze_map.sh MI 2022 P2020 P2016 S2020 S2018 G2018 AG2018
-#
+# $ scripts/analyze_map.sh MN 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< TODO: Which S2018?
 #
 #
 #

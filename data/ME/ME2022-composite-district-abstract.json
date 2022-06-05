@@ -1,0 +1,102 @@
+{
+  "state": "ME",
+  "name": "ME 2022 Congressional",
+  "nDistricts": 2,
+  "nCounties": 16,
+  "bStateLeg": false,
+  "population": {
+    "byDistrict": [
+      681179,
+      681180
+    ],
+    "targetSize": 681180
+  },
+  "shapes": [
+    {
+      "area": 1.483532,
+      "perimeter": 10.763918,
+      "diameter": 2.583767
+    },
+    {
+      "area": 9.02542,
+      "perimeter": 19.621559,
+      "diameter": 4.646939
+    }
+  ],
+  "counties": [
+    [
+      0,
+      0,
+      303069,
+      0,
+      0,
+      53595,
+      40607,
+      35237,
+      0,
+      0,
+      0,
+      36699,
+      0,
+      0,
+      0,
+      211972
+    ],
+    [
+      111139,
+      67105,
+      0,
+      29456,
+      55478,
+      70047,
+      0,
+      0,
+      57777,
+      152199,
+      16800,
+      0,
+      50477,
+      39607,
+      31095,
+      0
+    ]
+  ],
+  "partisanship": {
+    "statewide": 0.506345,
+    "byDistrict": [
+      0.568287,
+      0.437993
+    ]
+  },
+  "demographics": {
+    "statewide": {
+      "white": 0.9166,
+      "minority": 0.0834,
+      "black": 0.019782,
+      "hispanic": 0.015905,
+      "pacific": 0.001034,
+      "asian": 0.016225,
+      "native": 0.022345
+    },
+    "byDistrict": [
+      {
+        "white": 0.910241,
+        "minority": 0.089759,
+        "black": 0.023497,
+        "hispanic": 0.01825,
+        "pacific": 0.001034,
+        "asian": 0.020603,
+        "native": 0.018011
+      },
+      {
+        "white": 0.923005,
+        "minority": 0.076995,
+        "black": 0.016041,
+        "hispanic": 0.013543,
+        "pacific": 0.001034,
+        "asian": 0.011815,
+        "native": 0.026711
+      }
+    ]
+  }
+}

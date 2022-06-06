@@ -30,6 +30,7 @@
 # $ scripts/analyze_map.sh MT 2022 P2020 P2016 S2020 S2018 G2020 AG2020
 # $ scripts/analyze_map.sh NC 2022 P2020 P2016 S2020 S2016 G2020 AG2020 <<< DONE
 # $ scripts/analyze_map.sh NE 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< TODO: AG2018 not *'d.
+# $ scripts/analyze_map.sh NH 2022 P2020 P2016 S2020 S2016 G2020        <<< SKIP: No AG election! Only two districts.
 #
 # AK, DE, ND, SD, VT, and WY each have only one congressional district.
 

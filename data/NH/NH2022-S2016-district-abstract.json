@@ -1,0 +1,90 @@
+{
+  "state": "NH",
+  "name": "Copy of NH 2022 Congressional",
+  "nDistricts": 2,
+  "nCounties": 10,
+  "bStateLeg": false,
+  "population": {
+    "byDistrict": [
+      688764,
+      688765
+    ],
+    "targetSize": 688765
+  },
+  "shapes": [
+    {
+      "area": 0.684544,
+      "perimeter": 7.338378,
+      "diameter": 1.615871
+    },
+    {
+      "area": 2.018594,
+      "perimeter": 12.45419,
+      "diameter": 2.922008
+    }
+  ],
+  "counties": [
+    [
+      60288,
+      46854,
+      0,
+      0,
+      0,
+      184175,
+      14871,
+      251687,
+      130889,
+      0
+    ],
+    [
+      3417,
+      3253,
+      76458,
+      31268,
+      91118,
+      238762,
+      138937,
+      62489,
+      0,
+      43063
+    ]
+  ],
+  "partisanship": {
+    "statewide": 0.500718,
+    "byDistrict": [
+      0.491371,
+      0.510081
+    ]
+  },
+  "demographics": {
+    "statewide": {
+      "white": 0.888524,
+      "minority": 0.111476,
+      "black": 0.019427,
+      "hispanic": 0.035514,
+      "pacific": 0.001084,
+      "asian": 0.03018,
+      "native": 0.017225
+    },
+    "byDistrict": [
+      {
+        "white": 0.89037,
+        "minority": 0.10963,
+        "black": 0.02055,
+        "hispanic": 0.035234,
+        "pacific": 0.001113,
+        "asian": 0.02963,
+        "native": 0.016225
+      },
+      {
+        "white": 0.886674,
+        "minority": 0.113326,
+        "black": 0.018303,
+        "hispanic": 0.035794,
+        "pacific": 0.001056,
+        "asian": 0.030731,
+        "native": 0.018228
+      }
+    ]
+  }
+}

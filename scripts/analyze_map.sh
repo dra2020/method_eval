@@ -25,7 +25,9 @@
 # $ scripts/analyze_map.sh MI 2022 P2020 P2016 S2020 S2018 G2018 AG2018
 # $ scripts/analyze_map.sh MN 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< TODO: Which S2018?
 # $ scripts/analyze_map.sh MO 2022 P2020 P2016 S2018 S2016 G2020 AG2020
-# $ scripts/analyze_map.sh MO 2022 P2020 P2016 S2020 S2018 G2019 AG2019 <<< TODO: Which S2018?
+# $ scripts/analyze_map.sh MS 2022 P2020 P2016 S2020 S2018 G2019 AG2019 <<< TODO: Which S2018?
+#
+# $ scripts/analyze_map.sh MT 2022 P2020 P2016 S2020 S2018 G2020 AG2020
 #
 # $ scripts/analyze_map.sh NC 2022 P2020 P2016 S2020 S2016 G2020 AG2020 <<< DONE
 

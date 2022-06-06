@@ -20,7 +20,7 @@
 # $ scripts/analyze_map.sh LA 2022 P2020 P2016 S2020 S2016 G2019 AG2019 <<< NOTE: Not runoff G2019 but runoff S2016.
 # $ scripts/analyze_map.sh MA 2022 P2020 P2016 S2020 S2018 G2018 AG2018
 # $ scripts/analyze_map.sh MD 2022 P2020 P2016 S2018 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh ME 2022 P2020 P2016 S2020       G2018        <<< TODO: S2018 not *'d. No AG election.
+# $ scripts/analyze_map.sh ME 2022 P2020 P2016 S2020       G2018        <<< SKIP: S2018 not *'d. No AG election.
 # $ scripts/analyze_map.sh MI 2022 P2020 P2016 S2020 S2018 G2018 AG2018
 # $ scripts/analyze_map.sh MN 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< TODO: Which S2018?
 # $ scripts/analyze_map.sh MO 2022 P2020 P2016 S2018 S2016 G2020 AG2020
@@ -28,9 +28,12 @@
 # $ scripts/analyze_map.sh MT 2022 P2020 P2016 S2020 S2018 G2020 AG2020
 # $ scripts/analyze_map.sh NC 2022 P2020 P2016 S2020 S2016 G2020 AG2020 <<< DONE
 # $ scripts/analyze_map.sh NE 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< TODO: AG2018 not *'d.
-# $ scripts/analyze_map.sh NH 2022 P2020 P2016 S2020 S2016 G2020        <<< SKIP: No AG election! Only two districts.
+# $ scripts/analyze_map.sh NH 2022 P2020 P2016 S2020 S2016 G2020        <<< SKIP: No AG election. Only two districts.
 # $ scripts/analyze_map.sh NJ 2022 P2020 P2016 S2020 S2018 G2017        <<< TODO: No AG election. 
 # $ scripts/analyze_map.sh NM 2022 P2020 P2016 S2020 S2018 G2018 AG2018
+# $ scripts/analyze_map.sh NV 2022 P2020 P2016 S2018 S2016 G2020        <<< TODO: AG2018 not listed? Only four districts.
+# $ scripts/analyze_map.sh NY 2022 P2020 P2016 S2020 S2016 G2018 AG2018
+# $ scripts/analyze_map.sh OH 2022 P2020 P2016 S2018 S2016 G2018 AG2018
 #
 # AK, DE, ND, SD, VT, and WY each have only one congressional district.
 

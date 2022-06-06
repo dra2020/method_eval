@@ -209,7 +209,7 @@ try:
 
     # Write the r(v) points to a file
 
-    out_path = args.state + args.year + "-" + args.election + "-r(v)-points.csv"
+    out_path = args.state + args.year + "-" + args.election + "-v(i)-points.csv"
     with open(out_path, "w") as f:
         print(
             "{},{}".format("CD", args.election + "_" + "Vf"),

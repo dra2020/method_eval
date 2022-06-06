@@ -80,7 +80,7 @@ echo ... culling the results ...
 echo ... combining S-V points ...
 
 paste -d "," $xx$yy-composite-s(v)-points.csv $xx$yy-$e1-s(v)-points.csv $xx$yy-$e2-s(v)-points.csv $xx$yy-$e3-s(v)-points.csv $xx$yy-$e4-s(v)-points.csv $xx$yy-$e5-s(v)-points.csv $xx$yy-$e6-s(v)-points.csv > $xx$yy-s(v)-points.csv
-paste -d "," $xx$yy-composite-r(v)-points.csv $xx$yy-$e1-r(v)-points.csv $xx$yy-$e2-r(v)-points.csv $xx$yy-$e3-r(v)-points.csv $xx$yy-$e4-r(v)-points.csv $xx$yy-$e5-r(v)-points.csv $xx$yy-$e6-r(v)-points.csv > $xx$yy-r(v)-points.csv
+paste -d "," $xx$yy-composite-v(i)-points.csv $xx$yy-$e1-v(i)-points.csv $xx$yy-$e2-v(i)-points.csv $xx$yy-$e3-v(i)-points.csv $xx$yy-$e4-v(i)-points.csv $xx$yy-$e5-v(i)-points.csv $xx$yy-$e6-v(i)-points.csv > $xx$yy-v(i)-points.csv
 
 cd ../..
 

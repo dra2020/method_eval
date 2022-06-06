@@ -28,8 +28,10 @@
 # $ scripts/analyze_map.sh MS 2022 P2020 P2016 S2020 S2018 G2019 AG2019 <<< TODO: Which S2018?
 #
 # $ scripts/analyze_map.sh MT 2022 P2020 P2016 S2020 S2018 G2020 AG2020
-#
 # $ scripts/analyze_map.sh NC 2022 P2020 P2016 S2020 S2016 G2020 AG2020 <<< DONE
+# $ scripts/analyze_map.sh NE 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< TODO: AG2018 not *'d.
+#
+# AK, DE, ND, SD, VT, and WY each have only one congressional district.
 
 # TODO: inventory map share links
 

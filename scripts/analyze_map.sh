@@ -34,6 +34,9 @@
 # $ scripts/analyze_map.sh NV 2022 P2020 P2016 S2018 S2016 G2020        <<< TODO: AG2018 not listed? Only four districts.
 # $ scripts/analyze_map.sh NY 2022 P2020 P2016 S2020 S2016 G2018 AG2018
 # $ scripts/analyze_map.sh OH 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< NOTE: Not 'usr' versions.
+# $ scripts/analyze_map.sh OK 2022 P2020 P2016 S2018 S2016 G2018 AG2018 
+# $ scripts/analyze_map.sh OR 2022 P2020 P2016 S2020 S2016 G2018 AG2020 
+# $ scripts/analyze_map.sh PA 2022 P2020 P2016 S2018 S2016 G2018 AG2020 
 #
 # AK, DE, ND, SD, VT, and WY each have only one congressional district.
 

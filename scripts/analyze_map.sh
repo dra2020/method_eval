@@ -46,7 +46,7 @@
 # $ scripts/analyze_map.sh VA 2022 P2020 P2016 S2020 S2018 G2021 AG2021 <<< NOTE: 2021 elections
 # $ scripts/analyze_map.sh WA 2022 P2020 P2016 S2018 S2016 G2020 AG2020 
 # $ scripts/analyze_map.sh WI 2022 P2020 P2016 S2018 S2016 G2018 AG2018 
-# $ scripts/analyze_map.sh WV 2022 P2020 P2012                          <<< SKIP: Only PVI
+# $ scripts/analyze_map.sh WV 2022 P2020 P2012                          <<< SKIP: Only PVI. Only two districts.
 #
 # AK, DE, ND, SD, VT, and WY each have only one congressional district.
 

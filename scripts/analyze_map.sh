@@ -49,8 +49,6 @@
 #
 # AK, DE, ND, SD, VT, and WY each have only one congressional district.
 
-# TODO: inventory map share links
-
 xx=$1
 yy=$2
 e1=$3

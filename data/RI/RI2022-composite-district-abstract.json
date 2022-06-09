@@ -1,0 +1,80 @@
+{
+  "state": "RI",
+  "name": "Copy of RI 2022 Congressional",
+  "nDistricts": 2,
+  "nCounties": 5,
+  "bStateLeg": false,
+  "population": {
+    "byDistrict": [
+      548078,
+      549301
+    ],
+    "targetSize": 548690
+  },
+  "shapes": [
+    {
+      "area": 0.142927,
+      "perimeter": 2.601061,
+      "diameter": 0.787894
+    },
+    {
+      "area": 0.289201,
+      "perimeter": 3.345855,
+      "diameter": 0.944651
+    }
+  ],
+  "counties": [
+    [
+      50793,
+      0,
+      85643,
+      411642,
+      0
+    ],
+    [
+      0,
+      170363,
+      0,
+      249099,
+      129839
+    ]
+  ],
+  "partisanship": {
+    "statewide": 0.618909,
+    "byDistrict": [
+      0.662156,
+      0.58134
+    ]
+  },
+  "demographics": {
+    "statewide": {
+      "white": 0.723794,
+      "minority": 0.276206,
+      "black": 0.079277,
+      "hispanic": 0.141943,
+      "pacific": 0.001865,
+      "asian": 0.041625,
+      "native": 0.018755
+    },
+    "byDistrict": [
+      {
+        "white": 0.678573,
+        "minority": 0.321427,
+        "black": 0.101798,
+        "hispanic": 0.159472,
+        "pacific": 0.00218,
+        "asian": 0.045189,
+        "native": 0.018173
+      },
+      {
+        "white": 0.768411,
+        "minority": 0.231589,
+        "black": 0.057057,
+        "hispanic": 0.124649,
+        "pacific": 0.001553,
+        "asian": 0.038108,
+        "native": 0.019329
+      }
+    ]
+  }
+}

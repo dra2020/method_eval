@@ -8,7 +8,12 @@ For each 2022 congressional map:
 ## TODO
 
 - Pull data for each state
+- Inventory the map links & pull dates for each state
+
 - Run the analyze_map.sh script for each state
-- Resolve election issues w/ Dave when he gets back
+- Resolve election issues w/ Dave when he gets back <<< Dave
+
 - Import results into & format spreadsheets for each state
 - Combine the composite results for each state into all up spreadsheets
+
+- Flesh out research questions

@@ -37,6 +37,15 @@
 # $ scripts/analyze_map.sh OK 2022 P2020 P2016 S2018 S2016 G2018 AG2018 
 # $ scripts/analyze_map.sh OR 2022 P2020 P2016 S2020 S2016 G2018 AG2020 
 # $ scripts/analyze_map.sh PA 2022 P2020 P2016 S2018 S2016 G2018 AG2020 
+# $ scripts/analyze_map.sh RI 2022 P2020 P2016 S2020 S2018 G2018 AG2018 
+# $ scripts/analyze_map.sh SC 2022 P2020 P2016 S2020 S2016 G2018 AG2018 
+# $ scripts/analyze_map.sh TN 2022 P2020 P2016 S2020 S2018 G2018        <<< SKIP: No AG election.
+TX
+UT
+VA
+WA
+WI
+WV
 #
 # AK, DE, ND, SD, VT, and WY each have only one congressional district.
 

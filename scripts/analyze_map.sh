@@ -40,7 +40,6 @@
 # $ scripts/analyze_map.sh RI 2022 P2020 P2016 S2020 S2018 G2018 AG2018 
 # $ scripts/analyze_map.sh SC 2022 P2020 P2016 S2020 S2016 G2018 AG2018 
 # $ scripts/analyze_map.sh TN 2022 P2020 P2016 S2020 S2018 G2018        <<< SKIP: No AG election.
-#
 # $ scripts/analyze_map.sh TX 2022 P2020 P2016 S2020 S2018 G2018 AG2018
 # $ scripts/analyze_map.sh UT 2022 P2020 P2012 S2018 S2016 G2020 AG2020 <<< NOTE: P2012  
 # $ scripts/analyze_map.sh VA 2022 P2020 P2016 S2020 S2018 G2021 AG2021 <<< NOTE: 2021 elections

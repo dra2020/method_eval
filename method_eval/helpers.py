@@ -52,7 +52,13 @@ def write_csv(rel_path, rows, cols):
             writer.writeheader()
 
             for row in rows:
-                writer.writerow(row)
+                mod = {}
+                for (k, v) in row.items():
+                    if isinstance(v, float):
+                        mod[k] = "{:.6f}".format(v)
+                    else:
+                        mod[k] = v
+                writer.writerow(mod)
 
     except:
         raise Exception("Exception writing CSV.")

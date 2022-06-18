@@ -104,16 +104,19 @@ echo ... combining individual election files ...
 paste -d "," _$xx$yy-composite-metrics.csv _$xx$yy-$e1-metrics.csv _$xx$yy-$e2-metrics.csv _$xx$yy-$e3-metrics.csv _$xx$yy-$e4-metrics.csv _$xx$yy-$e5-metrics.csv _$xx$yy-$e6-metrics.csv > _$xx$yy-metrics-RAW.csv
 paste -d "," _$xx$yy-composite-SV-points.csv _$xx$yy-$e1-SV-points.csv _$xx$yy-$e2-SV-points.csv _$xx$yy-$e3-SV-points.csv _$xx$yy-$e4-SV-points.csv _$xx$yy-$e5-SV-points.csv _$xx$yy-$e6-SV-points.csv > _$xx$yy-SV-points-RAW.csv
 paste -d "," _$xx$yy-composite-vi-points.csv _$xx$yy-$e1-vi-points.csv _$xx$yy-$e2-vi-points.csv _$xx$yy-$e3-vi-points.csv _$xx$yy-$e4-vi-points.csv _$xx$yy-$e5-vi-points.csv _$xx$yy-$e6-vi-points.csv > _$xx$yy-vi-points-RAW.csv
+paste -d "," _$xx$yy-composite-rv-points.csv _$xx$yy-$e1-rv-points.csv _$xx$yy-$e2-rv-points.csv _$xx$yy-$e3-rv-points.csv _$xx$yy-$e4-rv-points.csv _$xx$yy-$e5-rv-points.csv _$xx$yy-$e6-rv-points.csv > _$xx$yy-rv-points-RAW.csv
 
 cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-metrics-RAW.csv > _$xx$yy-metrics.csv
 cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-SV-points-RAW.csv > _$xx$yy-SV-points.csv
 cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-vi-points-RAW.csv > _$xx$yy-vi-points-UNSORTED.csv
+cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-rv-points-RAW.csv > _$xx$yy-rv-points.csv
 
 ../../scripts/sort_csv.sh _$xx$yy-vi-points-UNSORTED.csv _$xx$yy-vi-points.csv
 
 ../../scripts/calc_stats.py $xx $yy metrics str
 ../../scripts/calc_stats.py $xx $yy SV-points float
 ../../scripts/calc_stats.py $xx $yy vi-points int
+../../scripts/calc_stats.py $xx $yy rv-points str
 
 cd ../..
 

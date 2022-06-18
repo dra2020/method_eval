@@ -106,6 +106,13 @@ try:
     littleR = s["responsiveness"]["littleR"]
     rD = s["responsiveness"]["rD"]
 
+    # r(v) points
+    Sb = s["rvPoints"]["Sb"]
+    Ra = s["rvPoints"]["Ra"]
+    Rb = s["rvPoints"]["Rb"]
+    Va = s["rvPoints"]["Va"]
+    Vb = s["rvPoints"]["Vb"]
+
     # Add +/– 2% bracketing S(V) points
 
     # For Vf = 0.4873, [0.485, 0.490] => [0.465, 0.510]
@@ -135,7 +142,7 @@ try:
             upper_Vf = pt["v"]
             upper_Sf = pt["s"]
 
-    # Append row to file
+    # Write the metrics to a file
 
     out_path = "_" + args.state + args.year + "-" + args.election + "-metrics.csv"
     with open(out_path, "w") as f:
@@ -164,75 +171,18 @@ try:
         print("{},{:.6f}".format("U_Vf", upper_Vf), file=f)
         print("{},{:.6f}".format("U_Sf", upper_Sf), file=f)
 
-    """
-    out_path = "_" + args.state + args.year + "-elections-analysis.csv"
-    with open(out_path, "a") as f:
-        if verbose:
-            print(
-                "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}".format(
-                    "XX",
-                    "YEAR",
-                    "ELECTION",
-                    "CD",
-                    "Vf",
-                    "S_V",
-                    "FPTP",
-                    "PR",
-                    "BS_50",
-                    "BV_50",
-                    "DECL",
-                    "GS",
-                    "EG",
-                    "BS_V",
-                    "PROP",
-                    "MM",
-                    "TO",
-                    "MM'",
-                    "LO",
-                    "BIG_R",
-                    "LIL_R",
-                    "R_V",
-                    "L_Vf",
-                    "L_Sf",
-                    "U_Vf",
-                    "U_Sf",
-                ),
-                file=f,
-            )
-        print(
-            "{},{},{},{},{:.6f},{:.6f},{},{},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f},{:.6f}".format(
-                xx,
-                year,
-                election,
-                n,
-                Vf,
-                estS,
-                fptpS,
-                bestS,
-                bS50,
-                bV50,
-                decl,
-                gSym,
-                eG,
-                bSV,
-                prop,
-                mMs,
-                tOf,
-                mMd,
-                lO,
-                bigR,
-                littleR,
-                rD,
-                lower_Vf,
-                lower_Sf,
-                upper_Vf,
-                upper_Sf,
-            ),
-            file=f,
-        )
-    """
-
     # Write the r(v) points to a file
+
+    out_path = "_" + args.state + args.year + "-" + args.election + "-rv-points.csv"
+    with open(out_path, "w") as f:
+        print("{},{}".format("POINT", args.election), file=f)
+        print("{},{:.6f}".format("Sb", Sb), file=f)
+        print("{},{:.6f}".format("Ra", Ra), file=f)
+        print("{},{:.6f}".format("Rb", Rb), file=f)
+        print("{},{:.6f}".format("Va", Va), file=f)
+        print("{},{:.6f}".format("Vb", Vb), file=f)
+
+    # Write the v(i) points to a file
 
     out_path = "_" + args.state + args.year + "-" + args.election + "-vi-points.csv"
     with open(out_path, "w") as f:

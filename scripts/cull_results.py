@@ -107,11 +107,11 @@ try:
     rD = s["responsiveness"]["rD"]
 
     # r(v) points
-    Sb = s["rvPoints"]["Sb"]
-    Ra = s["rvPoints"]["Ra"]
-    Rb = s["rvPoints"]["Rb"]
-    Va = s["rvPoints"]["Va"]
-    Vb = s["rvPoints"]["Vb"]
+    Sb = s["bias"]["rvPoints"]["Sb"]
+    Ra = s["bias"]["rvPoints"]["Ra"]
+    Rb = s["bias"]["rvPoints"]["Rb"]
+    Va = s["bias"]["rvPoints"]["Va"]
+    Vb = s["bias"]["rvPoints"]["Vb"]
 
     # Add +/– 2% bracketing S(V) points
 

@@ -95,8 +95,9 @@ echo ... culling the results ...
 ../../scripts/cull_results.py $xx $yy $e5
 ../../scripts/cull_results.py $xx $yy $e6
 
-echo ... combining S-V points ...
+echo ... combining individual election files ...
 
+paste -d "," _$xx$yy-composite-metrics.csv _$xx$yy-$e1-metrics.csv _$xx$yy-$e2-metrics.csv _$xx$yy-$e3-metrics.csv _$xx$yy-$e4-metrics.csv _$xx$yy-$e5-metrics.csv _$xx$yy-$e6-metrics.csv > _$xx$yy-metrics.csv
 paste -d "," _$xx$yy-composite-SV-points.csv _$xx$yy-$e1-SV-points.csv _$xx$yy-$e2-SV-points.csv _$xx$yy-$e3-SV-points.csv _$xx$yy-$e4-SV-points.csv _$xx$yy-$e5-SV-points.csv _$xx$yy-$e6-SV-points.csv > _$xx$yy-SV-points.csv
 paste -d "," _$xx$yy-composite-vi-points.csv _$xx$yy-$e1-vi-points.csv _$xx$yy-$e2-vi-points.csv _$xx$yy-$e3-vi-points.csv _$xx$yy-$e4-vi-points.csv _$xx$yy-$e5-vi-points.csv _$xx$yy-$e6-vi-points.csv > _$xx$yy-vi-points.csv
 

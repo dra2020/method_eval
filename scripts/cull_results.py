@@ -8,11 +8,7 @@ For example:
 $ scripts/cull_results.py NC 2022 composite
 
 
-Columns in elections file:
-
-* XX = the two-character state abbreviation
-* YEAR = the four-digit year for the map (e.g., 2022)
-* CD = the # of congressional districts
+Metrics in metrics file:
 
 * ELECTION = abbreviation of the election dataset
 * Vf = the statewide D vote share
@@ -34,9 +30,9 @@ Columns in elections file:
 * MM' = Mean – median difference using average district v 
 * LO = Lopsided outcomes
 
-* BIG_R = Overall responsiveness or winner’s bonus 
-* LIL_R = The point responsiveness at Vf, i.e., the slope of the S(V) curve at Vf
-* R_V = the estimated responsive districts, using seat probabilities
+* R (BIG_R) = Overall responsiveness or winner’s bonus 
+* r (LIL_R) = The point responsiveness at Vf, i.e., the slope of the S(V) curve at Vf
+* Rd (R_V) = the estimated responsive districts, using seat probabilities
 
 * L_Vf = the D vote share of the inferred S(V) point ~2.0% below Vf
 * L_Sf = the corresponding D seat share

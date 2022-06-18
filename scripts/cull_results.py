@@ -212,7 +212,7 @@ try:
     out_path = "_" + args.state + args.year + "-" + args.election + "-vi-points.csv"
     with open(out_path, "w") as f:
         print(
-            "{},{}".format("CD", args.election + "_" + "Vf"),
+            "{},{}".format("CD", args.election),  # + "_" + "Vf"),
             file=f,
         )
 
@@ -225,7 +225,7 @@ try:
     out_path = "_" + args.state + args.year + "-" + args.election + "-SV-points.csv"
     with open(out_path, "w") as f:
         print(
-            "{},{}".format("Vf", args.election + "_" + "Sf"),
+            "{},{}".format("Vf", args.election),  # + "_" + "Sf"),
             file=f,
         )
 

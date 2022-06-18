@@ -54,7 +54,6 @@ try:
     types = [getattr(builtins, type)] + [float] * 7
 
     rows = read_typed_csv(in_path, types)
-    cols = rows[0].keys()
 
     # Calculate stats
 
@@ -62,10 +61,12 @@ try:
         values = list(row.values())[2:]
         row["MEAN"] = round(statistics.mean(values), 6)
         row["SEM"] = round(statistics.stdev(values) / math.sqrt(len(values)), 6)
+        row["RSE"] = round(row["SEM"] / row["MEAN"], 6)
 
     # Write the new CSV w/ stats
 
     out_path = xx + year + "-" + file + ".csv"
+    cols = rows[0].keys()
     write_csv(out_path, rows, cols)
 
 except:

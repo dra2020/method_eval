@@ -2,8 +2,8 @@
 #
 # Analyze a redistricting map:
 # - This isn't the most elegant script, but it works.
-# - It automates the entire workflow taking a district abstract export from DRA in, and
-# - creating a partisan profile, running analytics on it, and
+# - It automates the entire workflow from taking a district abstract export from DRA in, and
+# - creating a partisan profile, running analytics on it, and finally
 # - producing statistics files for metrics, the S(V) curve, and the r(v) points.
 #
 # $ scripts/analyze_map.sh AL 2022 P2020 P2016 S2020 S2017 G2018 AG2018
@@ -107,7 +107,9 @@ paste -d "," _$xx$yy-composite-vi-points.csv _$xx$yy-$e1-vi-points.csv _$xx$yy-$
 
 cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-metrics-RAW.csv > _$xx$yy-metrics.csv
 cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-SV-points-RAW.csv > _$xx$yy-SV-points.csv
-cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-vi-points-RAW.csv > _$xx$yy-vi-points.csv
+cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-vi-points-RAW.csv > _$xx$yy-vi-points-UNSORTED.csv
+
+sort_csv.sh _$xx$yy-vi-points-UNSORTED.csv _$xx$yy-vi-points.csv
 
 ../../scripts/calc_stats.py $xx $yy metrics str
 ../../scripts/calc_stats.py $xx $yy SV-points float

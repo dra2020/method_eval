@@ -2,9 +2,11 @@
 #
 # Analyze a redistricting map:
 # - This isn't the most elegant script, but it works.
-# - It automates the entire workflow from taking a district abstract export from DRA in, and
-# - creating a partisan profile, running analytics on it, and finally
-# - producing statistics files for metrics, the S(V) curve, and the r(v) points.
+# - It essentially automates what would otherwise be a manual workflow 
+# - starting with a district abstract export from DRA, and
+# - then creating a partisan profile, running analytics on it, and
+# - finally producing statistics files for metrics, the S(V) curve & r(v) points, and 
+# - district-by-district vote shares.
 #
 # $ scripts/analyze_map.sh AL 2022 P2020 P2016 S2020 S2017 G2018 AG2018
 # $ scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018

@@ -97,8 +97,8 @@ echo ... culling the results ...
 
 echo ... combining S-V points ...
 
-paste -d "," _$xx$yy-composite-s(v)-points.csv _$xx$yy-$e1-s(v)-points.csv _$xx$yy-$e2-s(v)-points.csv _$xx$yy-$e3-s(v)-points.csv _$xx$yy-$e4-s(v)-points.csv _$xx$yy-$e5-s(v)-points.csv _$xx$yy-$e6-s(v)-points.csv > _$xx$yy-s(v)-points.csv
-paste -d "," _$xx$yy-composite-v(i)-points.csv _$xx$yy-$e1-v(i)-points.csv _$xx$yy-$e2-v(i)-points.csv _$xx$yy-$e3-v(i)-points.csv _$xx$yy-$e4-v(i)-points.csv _$xx$yy-$e5-v(i)-points.csv _$xx$yy-$e6-v(i)-points.csv > _$xx$yy-v(i)-points.csv
+paste -d "," _$xx$yy-composite-SV-points.csv _$xx$yy-$e1-SV-points.csv _$xx$yy-$e2-SV-points.csv _$xx$yy-$e3-SV-points.csv _$xx$yy-$e4-SV-points.csv _$xx$yy-$e5-SV-points.csv _$xx$yy-$e6-SV-points.csv > _$xx$yy-SV-points.csv
+paste -d "," _$xx$yy-composite-vi-points.csv _$xx$yy-$e1-vi-points.csv _$xx$yy-$e2-vi-points.csv _$xx$yy-$e3-vi-points.csv _$xx$yy-$e4-vi-points.csv _$xx$yy-$e5-vi-points.csv _$xx$yy-$e6-vi-points.csv > _$xx$yy-vi-points.csv
 
 cd ../..
 

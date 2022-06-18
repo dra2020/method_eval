@@ -70,7 +70,7 @@ try:
 
     # From profile
 
-    in_path = args.state + args.year + "-" + args.election + "-profile.json"
+    in_path = "_" + args.state + args.year + "-" + args.election + "-profile.json"
     with open(in_path, "r") as f:
         p = json.load(f)
 
@@ -79,7 +79,7 @@ try:
 
     # From scorecard
 
-    in_path = args.state + args.year + "-" + args.election + "-scorecard.json"
+    in_path = "_" + args.state + args.year + "-" + args.election + "-scorecard.json"
     with open(in_path, "r") as f:
         s = json.load(f)
 

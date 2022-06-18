@@ -33,7 +33,7 @@ try:
     profile["statewide"] = data["partisanship"]["statewide"]
     profile["byDistrict"] = data["partisanship"]["byDistrict"]
 
-    out_path = args.state + args.year + "-" + args.election + "-profile.json"
+    out_path = "_" + args.state + args.year + "-" + args.election + "-profile.json"
     with open(out_path, "w") as f:
         json.dump(profile, f)
 

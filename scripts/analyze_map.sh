@@ -26,7 +26,7 @@
 # $ scripts/analyze_map.sh MO 2022 P2020 P2016 S2018 S2016 G2020 AG2020
 # $ scripts/analyze_map.sh MS 2022 P2020 P2016 S2020 S2018 G2019 AG2019
 # $ scripts/analyze_map.sh MT 2022 P2020 P2016 S2020 S2018 G2020 AG2020
-# $ scripts/analyze_map.sh NC 2022 P2020 P2016 S2020 S2016 G2020 AG2020
+# $ scripts/analyze_map.sh NC 2022 P2020 P2016 S2020 S2016 G2020 AG2020 <<<
 # $ scripts/analyze_map.sh NE 2022 P2020 P2016 S2020 S2018 G2018 AG2018
 # $ scripts/analyze_map.sh NH 2022 P2020 P2016 S2020 S2016 G2020       
 # $ scripts/analyze_map.sh NJ 2022 P2020 P2016 S2020 S2018 G2017       
@@ -77,13 +77,13 @@ echo ... converting "District Abstracts" to partisan profiles ...
 
 echo ... running analytics on the profiles ...
 
-~/dev/dra-analytics/cli/partisan.js -i $xx$yy-composite-profile.json -j > $xx$yy-composite-scorecard.json
-~/dev/dra-analytics/cli/partisan.js -i $xx$yy-$e1-profile.json -j > $xx$yy-$e1-scorecard.json
-~/dev/dra-analytics/cli/partisan.js -i $xx$yy-$e2-profile.json -j > $xx$yy-$e2-scorecard.json
-~/dev/dra-analytics/cli/partisan.js -i $xx$yy-$e3-profile.json -j > $xx$yy-$e3-scorecard.json
-~/dev/dra-analytics/cli/partisan.js -i $xx$yy-$e4-profile.json -j > $xx$yy-$e4-scorecard.json
-~/dev/dra-analytics/cli/partisan.js -i $xx$yy-$e5-profile.json -j > $xx$yy-$e5-scorecard.json
-~/dev/dra-analytics/cli/partisan.js -i $xx$yy-$e6-profile.json -j > $xx$yy-$e6-scorecard.json
+~/dev/dra-analytics/cli/partisan.js -i _$xx$yy-composite-profile.json -j > _$xx$yy-composite-scorecard.json
+~/dev/dra-analytics/cli/partisan.js -i _$xx$yy-$e1-profile.json -j > _$xx$yy-$e1-scorecard.json
+~/dev/dra-analytics/cli/partisan.js -i _$xx$yy-$e2-profile.json -j > _$xx$yy-$e2-scorecard.json
+~/dev/dra-analytics/cli/partisan.js -i _$xx$yy-$e3-profile.json -j > _$xx$yy-$e3-scorecard.json
+~/dev/dra-analytics/cli/partisan.js -i _$xx$yy-$e4-profile.json -j > _$xx$yy-$e4-scorecard.json
+~/dev/dra-analytics/cli/partisan.js -i _$xx$yy-$e5-profile.json -j > _$xx$yy-$e5-scorecard.json
+~/dev/dra-analytics/cli/partisan.js -i _$xx$yy-$e6-profile.json -j > _$xx$yy-$e6-scorecard.json
 
 echo ... culling the results ...
 
@@ -97,8 +97,8 @@ echo ... culling the results ...
 
 echo ... combining S-V points ...
 
-paste -d "," $xx$yy-composite-s(v)-points.csv $xx$yy-$e1-s(v)-points.csv $xx$yy-$e2-s(v)-points.csv $xx$yy-$e3-s(v)-points.csv $xx$yy-$e4-s(v)-points.csv $xx$yy-$e5-s(v)-points.csv $xx$yy-$e6-s(v)-points.csv > $xx$yy-s(v)-points.csv
-paste -d "," $xx$yy-composite-v(i)-points.csv $xx$yy-$e1-v(i)-points.csv $xx$yy-$e2-v(i)-points.csv $xx$yy-$e3-v(i)-points.csv $xx$yy-$e4-v(i)-points.csv $xx$yy-$e5-v(i)-points.csv $xx$yy-$e6-v(i)-points.csv > $xx$yy-v(i)-points.csv
+paste -d "," _$xx$yy-composite-s(v)-points.csv _$xx$yy-$e1-s(v)-points.csv _$xx$yy-$e2-s(v)-points.csv _$xx$yy-$e3-s(v)-points.csv _$xx$yy-$e4-s(v)-points.csv _$xx$yy-$e5-s(v)-points.csv _$xx$yy-$e6-s(v)-points.csv > _$xx$yy-s(v)-points.csv
+paste -d "," _$xx$yy-composite-v(i)-points.csv _$xx$yy-$e1-v(i)-points.csv _$xx$yy-$e2-v(i)-points.csv _$xx$yy-$e3-v(i)-points.csv _$xx$yy-$e4-v(i)-points.csv _$xx$yy-$e5-v(i)-points.csv _$xx$yy-$e6-v(i)-points.csv > _$xx$yy-v(i)-points.csv
 
 cd ../..
 

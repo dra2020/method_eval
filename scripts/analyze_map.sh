@@ -109,7 +109,7 @@ cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-metrics-RAW.csv > _$xx$yy-metrics.csv
 cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-SV-points-RAW.csv > _$xx$yy-SV-points.csv
 cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-vi-points-RAW.csv > _$xx$yy-vi-points-UNSORTED.csv
 
-sort_csv.sh _$xx$yy-vi-points-UNSORTED.csv _$xx$yy-vi-points.csv
+../../scripts/sort_csv.sh _$xx$yy-vi-points-UNSORTED.csv _$xx$yy-vi-points.csv
 
 ../../scripts/calc_stats.py $xx $yy metrics str
 ../../scripts/calc_stats.py $xx $yy SV-points float

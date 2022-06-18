@@ -6,8 +6,5 @@
 #
 # sort_csv.sh input.csv output.csv
 
-echo "Sorting ..."
 head -n 1 $1 > $2 &&
-tail -n +2 $1 | sort -t "|" -k 2,2 >> $2
-
-echo "... done."
+tail -n +2 $1 | sort -t "," -k 2,2 >> $2

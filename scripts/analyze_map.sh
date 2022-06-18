@@ -1,6 +1,10 @@
 #!/bin/bash
 #
-# Analyze partisan profiles for a map
+# Analyze a redistricting map:
+# - This isn't the most elegant script, but it works.
+# - It automates the entire workflow taking a district abstract export from DRA in, and
+# - creating a partisan profile, running analytics on it, and
+# - producing statistics files for metrics, the S(V) curve, and the r(v) points.
 #
 # $ scripts/analyze_map.sh AL 2022 P2020 P2016 S2020 S2017 G2018 AG2018
 # $ scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018

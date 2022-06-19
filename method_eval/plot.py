@@ -3,15 +3,10 @@
 # TEST PLOTLY INTEGRATION
 #
 
-import chart_studio
 import chart_studio.plotly as py
 import plotly.graph_objs as go
 import numpy as np
 from math import erf, sqrt, isclose
-
-chart_studio.tools.set_credentials_file(
-    username="alecramsay", api_key="z1yBCOsQV3ARxY1CoQLa"
-)
 
 
 def plot_figure_1():

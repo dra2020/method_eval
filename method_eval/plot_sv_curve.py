@@ -9,6 +9,10 @@ PLOT S(V) CURVE
 def plot_sv_curve():
     print("TODO - Plot S(V) curve")
 
+    # dSVpoints
+    # Vf
+    # Sf
+
 
 """
 Copied from dra-analytics-app:

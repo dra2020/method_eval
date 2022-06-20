@@ -82,6 +82,7 @@ try:
     bestS = s["bias"]["bestS"]
     fptpS = s["bias"]["fptpS"]
     estS = s["bias"]["estS"]
+    estSf = s["bias"]["estSf"]
 
     bS50 = s["bias"]["bS50"]
     bV50 = s["bias"]["bV50"]
@@ -150,6 +151,7 @@ try:
         # print("{},{}".format("CD", xx), file=f)
         print("{},{:.6f}".format("Vf", Vf), file=f)
         print("{},{:.6f}".format("S_V", estS), file=f)
+        print("{},{:.6f}".format("Sf", estS), file=f)
         print("{},{:.6f}".format("FPTP", fptpS), file=f)
         print("{},{:.6f}".format("PR", bestS), file=f)
         print("{},{:.6f}".format("BS_50", bS50), file=f)

@@ -62,6 +62,7 @@ try:
         row["MEAN"] = round(statistics.mean(values), 6)
         row["SEM"] = round(statistics.stdev(values) / math.sqrt(len(values)), 6)
         row["RSE"] = round(row["SEM"] / row["MEAN"], 6)
+        row["RΔ"] = round((row["composite"] - row["MEAN"]) / row["MEAN"], 6)
 
     # Write the new CSV w/ stats
 

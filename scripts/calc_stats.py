@@ -15,14 +15,11 @@ $ ../../scripts/calc_stats.py NC 2022 metrics str
 
 import argparse
 
-import os
-from csv import DictReader, DictWriter
 import builtins
 import math
 import statistics
-from csv import DictReader, DictWriter
 
-from method_eval.helpers import read_typed_csv, write_csv
+from method_eval import *
 
 
 parser = argparse.ArgumentParser(description="Calculate statistics")

@@ -14,7 +14,7 @@ echo
 echo Plotting seats-votes curve for: $xx $yy
 echo
 
-cd analysis
+cd data
 cd $xx
 
 ../../scripts/plot_sv.py $xx $yy

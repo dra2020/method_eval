@@ -94,6 +94,7 @@ def plot_sv_curve(data):
     traces.append(prop_rule)
     traces.append(prop2_rule)
 
+    # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Layout.html#plotly.graph_objects.Layout
     # For tick formatting
     # https://github.com/d3/d3-format/tree/v1.4.5#d3-format
 
@@ -106,14 +107,17 @@ def plot_sv_curve(data):
             range=x_range,
             tickmode="linear",
             ticks="outside",
-            tick0=0.0,
-            dtick=0.1,
-            tickformat=".0%",
+            # tick0=0.0,
+            # dtick=0.1,
+            # tickformat=".0%",
             # tickformat="%{x:5.2%}",
-            showline=True,
-            showgrid=True,
-            linecolor="black",
+            # showline=True,
+            # showgrid=True,
+            # showticklabels=True,
+            # linecolor="black",
             # gridcolor="black",
+            # tickcolor="black",
+            # ticklabelposition="outside",
         ),
         yaxis=dict(
             # range=[0.0, 1.0], tickmode="linear", ticks="outside", tick0=0, dtick=0.25
@@ -123,14 +127,16 @@ def plot_sv_curve(data):
             scaleratio=1,
             tickmode="linear",
             ticks="outside",
-            tick0=0.0,
-            dtick=0.1,
-            tickformat=".0%",
+            # tick0=0.0,
+            # dtick=0.1,
+            # tickformat=".0%",
             # tickformat="%{y:5.2%}",
-            showline=True,
-            showgrid=True,
-            linecolor="black",
-            # gridcolor="black",
+            # showline=True,
+            # showgrid=True,
+            # showticklabels=True,
+            # linecolor="black",
+            # # gridcolor="black",
+            # tickcolor="black",
         ),
         dragmode="zoom",
         hovermode="closest",
@@ -139,6 +145,7 @@ def plot_sv_curve(data):
         plot_bgcolor=bgcolor,
     )
 
+    # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html
     fig = go.Figure(data=traces, layout=layout)
     py.plot(fig, filename="s(v)-curve")
 

@@ -5,19 +5,87 @@ PLOT S(V) CURVE
 
 """
 
+import chart_studio.plotly as py
+import plotly.graph_objs as go
+import numpy as np
+from math import erf, sqrt, isclose
 
-def plot_sv_curve():
-    """
-    Input:
 
-    const Vf: number = this.profile.statewide;
+def plot_sv_curve(data):
+    # Bind data
 
-    const Sf: number = Vf - this.scorecard.bias.prop;
+    Vf = data["Vf"]
+    Sf = data["Sf"]
+    dSVpoints = data["dSVpoints"]
+    name = data["name"]
 
-    const dSVpoints: SVpoint[] = this.scorecard.dSVpoints;
+    # Housekeeping
 
-    """
-    print("TODO - Plot S(V) curve")
+    traces = []
+    x_range = [0.0, 1.0]
+    y_range = [0.0, 1.0]
+
+    # TODO
+    # const margin: number = 0.05;  // +/– 5%
+
+    # const lo_x: number = Math.min(sym, Vf, Sf, S_BS_50, V_BV_50, S_EG) - margin;
+    # const hi_x: number = Math.max(sym, Vf, Sf, S_BS_50, V_BV_50, S_EG) + margin;
+
+    # x_range = [lo_x, hi_x];
+    # y_range = x_range;
+
+    # Make horizontal and vertical rules @ 0.50. And proportional rule.
+
+    r_x = [0.0, 0.5, 1.0]
+    r_y = [0.0, 0.5, 1.0]
+    r_s = [0.5, 0.5, 0.5]
+    r_v = [0.5, 0.5, 0.5]
+    # The S=V line
+    prop_x = [0.0, 0.5, 1.0]
+    # The EG=0 line
+    prop2_x = [0.25, 0.5, 0.75]
+    prop_y = [0.0, 0.5, 1.0]
+
+    h_rule = go.Scatter(
+        x=r_x, y=r_s, mode="lines", name="Seat % = 50%", marker=dict(size=3)
+    )
+
+    v_rule = go.Scatter(
+        x=r_v, y=r_y, mode="lines", name="Vote % = 50%", marker=dict(size=3)
+    )
+
+    # Add traces in the right order
+
+    traces.append(h_rule)
+    traces.append(v_rule)
+
+    layout = go.Layout(
+        title=name,
+        xaxis=dict(
+            title="Vote %",
+            range=x_range,
+            tickmode="linear",
+            ticks="outside",
+            tick0=0.0,
+            dtick=0.1,
+            tickformat="%{x:5.2%}",
+        ),
+        yaxis=dict(
+            # range=[0.0, 1.0], tickmode="linear", ticks="outside", tick0=0, dtick=0.25
+            title="Seat %",
+            range=y_range,
+            scaleanchor="x",
+            scaleratio=1,
+            tickmode="linear",
+            ticks="outside",
+            tick0=0.0,
+            dtick=0.1,
+            tickformat="%{y:5.2%}",
+        ),
+    )
+
+    fig = go.Figure(data=traces, layout=layout)
+    py.plot(fig, filename="s(v)-curve")
 
 
 """

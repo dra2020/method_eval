@@ -6,9 +6,7 @@ PLOT S(V) CURVE
 """
 
 import chart_studio.plotly as py
-import plotly.graph_objs as go
-import numpy as np
-from math import erf, sqrt, isclose
+import plotly.graph_objs as go  # https://plotly.com/python-api-reference/plotly.graph_objects.html
 
 
 def plot_sv_curve(data):
@@ -21,18 +19,24 @@ def plot_sv_curve(data):
 
     # Housekeeping
 
+    svSize = 700 - 25
+
+    bgcolor = "#fafafa"
+    # red = "#ff0000"
+    # blue = "#0000ff"
     traces = []
-    x_range = [0.0, 1.0]
-    y_range = [0.0, 1.0]
+    # x_range = [0.0, 1.0]
+    # y_range = [0.0, 1.0]
 
-    # TODO
-    # const margin: number = 0.05;  // +/– 5%
+    sym = 0.5
+    S_EG = 0.5 + (2.0 * (Vf - 0.5))
+    margin = 0.05
 
-    # const lo_x: number = Math.min(sym, Vf, Sf, S_BS_50, V_BV_50, S_EG) - margin;
-    # const hi_x: number = Math.max(sym, Vf, Sf, S_BS_50, V_BV_50, S_EG) + margin;
+    lo_x = max(0, min(sym, Vf, Sf, S_EG) - margin)
+    hi_x = min(1, max(sym, Vf, Sf, S_EG) + margin)
 
-    # x_range = [lo_x, hi_x];
-    # y_range = x_range;
+    x_range = [lo_x, hi_x]
+    y_range = x_range
 
     # Make horizontal and vertical rules @ 0.50. And proportional rule.
 
@@ -90,8 +94,13 @@ def plot_sv_curve(data):
     traces.append(prop_rule)
     traces.append(prop2_rule)
 
+    # For tick formatting
+    # https://github.com/d3/d3-format/tree/v1.4.5#d3-format
+
     layout = go.Layout(
         title=name,
+        width=svSize,
+        height=svSize,
         xaxis=dict(
             title="Vote %",
             range=x_range,
@@ -99,7 +108,12 @@ def plot_sv_curve(data):
             ticks="outside",
             tick0=0.0,
             dtick=0.1,
-            tickformat="%{x:5.2%}",
+            tickformat=".0%",
+            # tickformat="%{x:5.2%}",
+            showline=True,
+            showgrid=True,
+            linecolor="black",
+            # gridcolor="black",
         ),
         yaxis=dict(
             # range=[0.0, 1.0], tickmode="linear", ticks="outside", tick0=0, dtick=0.25
@@ -111,8 +125,18 @@ def plot_sv_curve(data):
             ticks="outside",
             tick0=0.0,
             dtick=0.1,
-            tickformat="%{y:5.2%}",
+            tickformat=".0%",
+            # tickformat="%{y:5.2%}",
+            showline=True,
+            showgrid=True,
+            linecolor="black",
+            # gridcolor="black",
         ),
+        dragmode="zoom",
+        hovermode="closest",
+        showlegend=False,
+        paper_bgcolor=bgcolor,
+        plot_bgcolor=bgcolor,
     )
 
     fig = go.Figure(data=traces, layout=layout)

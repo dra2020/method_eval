@@ -7,6 +7,20 @@ PLOT r(v) GRAPH
 
 
 def plot_rv_graph():
+    """
+    Input:
+
+    const statewideVf = this.profile.statewide;
+
+    const avgDWin = this.scorecard.averageDVf;
+    const avgRWin = this.scorecard.averageRVf;
+    const decl = this.scorecard.bias.decl;
+    const { Sb, Ra, Rb, Va, Vb } = this.scorecard.bias.rvPoints;
+
+    const unsortedVfArray = this.profile.byDistrict;
+
+    """
+
     print("TODO - Plot r(v) graph")
 
 
@@ -430,4 +444,96 @@ Copied from dra-analytics-app:
     }
   }
   
+
+    /// EDITED - to bind to the partisan profile ///
+  // From the *unsorted* array of D vote shares by district, extract the data needed
+  // to plot the district points in an r(v) graph.
+  extractRVGraphData(): RVGraphData
+  {
+    // Called only if openView, which guarantees profile is not null
+    // const {curModel} = this.props;
+    // const {redistrict} = curModel;
+    
+    const N: number = this.profile.byDistrict.length;
+    // const N: number = this.profile.nDistricts;
+    // For use in constructing district labels
+    // const XX: string = this.profile.state;
+    // const bLD: boolean = this.profile.bStateLeg;
+
+    // Step 1 - Get the unsorted vote shares by district index
+    const unsortedVfArray = this.profile.byDistrict;
+
+    const minVf = Math.min(...unsortedVfArray);
+    const maxVf = Math.max(...unsortedVfArray);
+
+    // Step 2 - Convert the unsorted VfArray into an array of [Vf, (district) index] pairs.
+    let idVfpairs = unsortedVfArray.map((item: any, index: any) => [item, index + 1]);
+    const Vf = 0;  // Index into [Vf, (district) index] pair
+    const Id = 1;  // Ditto
+
+    // Step 3 - Sort the pairs in ascending order of vote share.
+    idVfpairs.sort((a: number[], b: number[]) => a[Vf] - b[Vf]);
+
+    // Step 4 - Unzip that into separate sorted Vf and sorted districtId arrays.
+    const sortedVfArray = idVfpairs.map((pair: any) => pair[Vf]);
+    const sortedIndexes = idVfpairs.map((pair: any) => pair[Id]);
+
+    // Step 5 - Create a sorted array of district labels
+    const sortedLabels: string[] = sortedIndexes.map((i: any) => i.toLocaleString());
+
+    // const districtProps: Redistrict.DistrictPropArray = redistrict.safeDistrictProps();
+    // const sortedLabels = sortedIndexes.map(id => AU.getDistrictLabel(districtProps, id));
+    // NOTE - The old FiveThirtyEight-style template for district labels
+    // const size = (bLD) ? 3 : 2;
+    // const sortedLabels = sortedIndexes.map(id => XX + '-' + pad(id, size));
+
+    // Step 6 - Create an array of district ranks that correspond to the 1–N ordering.
+    const districtRanks = Array.from(Array(N)).map((e, i) => i + 1).map(i => rank(i, N));
+
+    // Step 7 - Split the sorted Vf, rank, and label arrays into R and D subsets.
+    const nRWins = sortedVfArray.filter((x: any) => x <= 0.5).length;  // Ties credited to R's
+
+    const rWinVfs: number[] = sortedVfArray.slice(0, nRWins);
+    const rWinRanks: number[] = districtRanks.slice(0, nRWins);
+    const rWinLabels: string[] = sortedLabels.slice(0, nRWins);
+
+    const dWinVfs: number[] = sortedVfArray.slice(nRWins);
+    const dWinRanks: number[] = districtRanks.slice(nRWins);
+    const dWinLabels: string[] = sortedLabels.slice(nRWins);
+
+    const data: RVGraphData = {
+      rWinVfs: rWinVfs,
+      rWinRanks: rWinRanks,
+      rWinLabels: rWinLabels,
+      dWinVfs: dWinVfs,
+      dWinRanks: dWinRanks,
+      dWinLabels: dWinLabels,
+      minVf: minVf,
+      maxVf: maxVf
+    };
+    
+    return data;
+  }
+
+  /// DELETED ///
+
+}
+
+/// DELETED ///
+
+function rank(i: number, n: number): number
+{
+  return (i - 0.5) / n;
+}
+
+function distance(pt1: number[], pt2: number[]): number
+{
+  const X = 0;
+  const Y = 1;
+
+  const d: number = Math.sqrt(((pt2[X] - pt1[X]) ** 2) + ((pt2[Y] - pt1[Y]) ** 2));
+
+  return d;
+}
+
 """

@@ -7,11 +7,17 @@ PLOT S(V) CURVE
 
 
 def plot_sv_curve():
-    print("TODO - Plot S(V) curve")
+    """
+    Input:
 
-    # dSVpoints
-    # Vf
-    # Sf
+    const Vf: number = this.profile.statewide;
+
+    const Sf: number = Vf - this.scorecard.bias.prop;
+
+    const dSVpoints: SVpoint[] = this.scorecard.dSVpoints;
+
+    """
+    print("TODO - Plot S(V) curve")
 
 
 """

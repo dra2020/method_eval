@@ -10,6 +10,7 @@ $ scripts/recombine_data.py NC 2022
 """
 
 import argparse
+import json
 import builtins
 
 from method_eval import *
@@ -34,37 +35,57 @@ try:
 
     verbose = args.verbose
 
-    # Output dicts
+    # From profile
 
-    sv_data = {}
-    rv_data = {}
+    in_path = "_" + args.state + args.year + "-" + "composite" + "-profile.json"
+    with open(in_path, "r") as f:
+        p = json.load(f)
 
-    # Read the metrics file w/ stats
+    Vf = p["statewide"]
+    byDistrict = p["byDistrict"]
 
-    in_path = xx + year + "-" + "metrics" + ".csv"
-    types = [getattr(builtins, "str")] + [float] * 10
+    # From scorecard
 
-    rows = read_typed_csv(in_path, types)
+    in_path = "_" + args.state + args.year + "-" + "composite" + "-scorecard.json"
+    with open(in_path, "r") as f:
+        s = json.load(f)
 
-    for row in rows:
-        if row["METRIC"] == "VF":
-            sv_data["Vf"] = row
+    Sf = s["bias"]["estSf"]
 
-        if row["METRIC"] == "Sf":
-            sv_data["Sf"] = row
+    avgDWin = s["averageDVf"]
+    avgRWin = s["averageRVf"]
+    decl = s["bias"]["decl"]
+    rvPoints = s["bias"]["rvPoints"]
 
     # Read the SV-points file w/ stats
 
     in_path = xx + year + "-" + "SV-points" + ".csv"
     types = [float] + [float] * 10
 
-    rows = read_typed_csv(in_path, types)
-    sv_data["dSVpoints"] = rows
+    dSVpoints = read_typed_csv(in_path, types)
 
-    # Write the new JSON files
-    print("S(V) data:", sv_data)
+    # Populate the output dicts
 
-    # out_path = xx + year + "-" + file + ".csv"
+    sv_data = {}
+    sv_data["Vf"] = Vf
+    sv_data["Sf"] = Sf
+    sv_data["dSVpoints"] = dSVpoints
+
+    rv_data = {}
+    rv_data["Vf"] = Vf
+    rv_data["byDistrict"] = byDistrict
+    rv_data["avgDWin"] = avgDWin
+    rv_data["avgRWin"] = avgRWin
+    rv_data["decl"] = decl
+    rv_data["rvPoints"] = rvPoints
+
+    # Pickle these native structures for use by S(V) and r(v) plots
+
+    out_path = xx + year + "-" + "SV-data" + ".pickle"
+    write_pickle(out_path, sv_data)
+
+    out_path = xx + year + "-" + "rv-data" + ".pickle"
+    write_pickle(out_path, rv_data)
 
 except:
     raise Exception("Exception reading or writing file")

@@ -41,8 +41,8 @@ Metrics in metrics file:
 
 """
 
-import json
 import argparse
+import json
 
 parser = argparse.ArgumentParser(description="Cull analytics results")
 
@@ -173,6 +173,9 @@ try:
         print("{},{:.6f}".format("U_Vf", upper_Vf), file=f)
         print("{},{:.6f}".format("U_Sf", upper_Sf), file=f)
 
+    """
+    NO LONGER USED
+    
     # Write the r(v) points to a file
 
     out_path = "_" + args.state + args.year + "-" + args.election + "-rv-points.csv"
@@ -183,6 +186,7 @@ try:
         print("{},{:.6f}".format("Rb", Rb), file=f)
         print("{},{:.6f}".format("Va", Va), file=f)
         print("{},{:.6f}".format("Vb", Vb), file=f)
+    """
 
     # Write the v(i) points to a file
 

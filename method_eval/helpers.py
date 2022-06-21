@@ -7,6 +7,9 @@ HELPERS
 
 import os
 from csv import DictReader, DictWriter
+import pickle
+
+# import json
 
 
 def read_typed_csv(rel_path, field_types):
@@ -76,3 +79,29 @@ class FileSpec:
         self.abs_path = os.path.abspath(path)
         self.name = name.lower() if (name) else os.path.basename(file_name).lower()
         self.extension = file_extension
+
+
+### PICKLING ###
+
+
+def write_pickle(rel_path, obj):
+    abs_path = FileSpec(rel_path).abs_path
+
+    try:
+        with open(abs_path, "wb") as handle:
+            pickle.dump(obj, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        return True
+    except Exception as e:
+        print("Exception pickling: ", e)
+        return False
+
+
+def read_pickle(rel_path):
+    abs_path = FileSpec(rel_path).abs_path
+
+    try:
+        with open(abs_path, "rb") as handle:
+            return pickle.load(handle)
+    except Exception as e:
+        print("Exception unpickling: ", e)
+        return False

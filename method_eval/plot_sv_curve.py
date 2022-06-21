@@ -47,17 +47,48 @@ def plot_sv_curve(data):
     prop_y = [0.0, 0.5, 1.0]
 
     h_rule = go.Scatter(
-        x=r_x, y=r_s, mode="lines", name="Seat % = 50%", marker=dict(size=3)
+        x=r_x,
+        y=r_s,
+        mode="lines",
+        name="Seat % = 50%",
+        line=dict(color="black", width=0.5, dash="solid"),
+        hoverinfo="none",
+        showlegend=False,
     )
-
     v_rule = go.Scatter(
-        x=r_v, y=r_y, mode="lines", name="Vote % = 50%", marker=dict(size=3)
+        x=r_v,
+        y=r_y,
+        mode="lines",
+        name="Vote % = 50%",
+        line=dict(color="black", width=0.5, dash="solid"),
+        hoverinfo="none",
+        showlegend=False,
+    )
+    prop_rule = go.Scatter(
+        x=prop_x,
+        y=prop_y,
+        mode="lines",
+        name="Proportionality",
+        line=dict(color="black", width=0.5, dash="dot"),
+        hoverinfo="none",
+        showlegend=False,
+    )
+    prop2_rule = go.Scatter(
+        x=prop2_x,
+        y=prop_y,
+        mode="lines",
+        name="EG = 0",
+        line=dict(color="black", width=0.5, dash="dash"),
+        hoverinfo="none",
+        showlegend=False,
     )
 
     # Add traces in the right order
 
     traces.append(h_rule)
     traces.append(v_rule)
+    traces.append(prop_rule)
+    traces.append(prop2_rule)
 
     layout = go.Layout(
         title=name,

@@ -26,7 +26,7 @@ def plot_sv_curve(data):
 
     # Set view range
 
-    x_range = [0.30, 0.70]
+    x_range = [0.25, 0.75]
     # sym = 0.5
     # lo_x = min(Vf - 0.10, sym - 0.05)
     # hi_x = max(Vf + 0.10, sym + 0.05)

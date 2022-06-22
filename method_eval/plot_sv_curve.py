@@ -28,8 +28,8 @@ def plot_sv_curve(data):
 
     # Set view range
 
-    lo_x = 0.250
-    hi_x = 0.750
+    lo_x = 0.350
+    hi_x = 0.650
     x_range = [lo_x, hi_x]
     y_range = x_range
 
@@ -91,18 +91,48 @@ def plot_sv_curve(data):
         showlegend=False,
     )
 
+    # 'Local' region
+
+    shadedColor = "whitesmoke"
+    local = 5 / 100  # "Local" range = 5%
+    delta = local / 2
+
+    vrVMinusTrace = go.Scatter(
+        x=[Vf - delta, Vf - delta],
+        y=[0.0, 1.0],
+        mode="lines",
+        line=dict(color=shadedColor, width=0.5),
+        hoverinfo="none",
+        showlegend=False,
+    )
+    vrVPlusTrace = go.Scatter(
+        x=[Vf + delta, Vf + delta],
+        y=[0.0, 1.0],
+        fill="tonextx",
+        fillcolor=shadedColor,
+        type="scatter",
+        name="Uncertainty",
+        text="uncertainty",
+        mode="lines",
+        line=dict(color=shadedColor, width=0.5),
+        hoverinfo="none",
+        showlegend=False,
+    )
+
     # Inferred D S(V) curve
+
     d_sv_curve = go.Scatter(
         x=v_d,
         y=s_d,
         mode="lines",
         name="Inferred S(V) curve",
-        line=dict(color=blue),
+        line=dict(color=blue, width=1),
         # hovertemplate=hoverTemplate,
         showlegend=False,
     )
 
     # Statewide D vote share
+
     v_Vf = [Vf, Vf, Vf]
     s_Vf = [0.0, 0.5, 1.0]
     Vf_rule = go.Scatter(
@@ -117,10 +147,12 @@ def plot_sv_curve(data):
 
     # Add traces in the right order
 
+    traces.append(vrVMinusTrace)
+    traces.append(vrVPlusTrace)
+    traces.append(prop2_rule)
     traces.append(h_rule)
     traces.append(v_rule)
     traces.append(prop_rule)
-    traces.append(prop2_rule)
     traces.append(Vf_rule)
     traces.append(d_sv_curve)
 

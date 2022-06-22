@@ -25,18 +25,11 @@ def plot_sv_curve(data):
     # red = "#ff0000"
     blue = "#0000ff"
     traces = []
-    # x_range = [0.0, 1.0]
-    # y_range = [0.0, 1.0]
 
-    # TODO - Set view range
+    # Set view range
 
-    sym = 0.5
-    S_EG = 0.5 + (2.0 * (Vf - 0.5))
-    margin = 0.05
-
-    lo_x = max(0, min(sym, Vf, Sf, S_EG) - margin)
-    hi_x = min(1, max(sym, Vf, Sf, S_EG) + margin)
-
+    lo_x = 0.250
+    hi_x = 0.750
     x_range = [lo_x, hi_x]
     y_range = x_range
 
@@ -98,7 +91,7 @@ def plot_sv_curve(data):
         showlegend=False,
     )
 
-    # const hoverTemplate = 'Vote %: %{x:5.2%}, Seat %: %{y:5.2%}<extra></extra>';
+    # Inferred D S(V) curve
     d_sv_curve = go.Scatter(
         x=v_d,
         y=s_d,
@@ -109,12 +102,26 @@ def plot_sv_curve(data):
         showlegend=False,
     )
 
+    # Statewide D vote share
+    v_Vf = [Vf, Vf, Vf]
+    s_Vf = [0.0, 0.5, 1.0]
+    Vf_rule = go.Scatter(
+        x=v_Vf,
+        y=s_Vf,
+        mode="lines",
+        name="Statewide D vote %",
+        line=dict(color="black", width=1, dash="dashdot"),
+        hoverinfo="none",
+        showlegend=False,
+    )
+
     # Add traces in the right order
 
     traces.append(h_rule)
     traces.append(v_rule)
     traces.append(prop_rule)
     traces.append(prop2_rule)
+    traces.append(Vf_rule)
     traces.append(d_sv_curve)
 
     # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Layout.html#plotly.graph_objects.Layout

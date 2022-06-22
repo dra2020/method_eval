@@ -26,10 +26,11 @@ def plot_sv_curve(data):
 
     # Set view range
 
-    sym = 0.5
-    lo_x = min(Vf - 0.10, sym - 0.05)
-    hi_x = max(Vf + 0.10, sym + 0.05)
-    x_range = [lo_x, hi_x]
+    x_range = [0.30, 0.70]
+    # sym = 0.5
+    # lo_x = min(Vf - 0.10, sym - 0.05)
+    # hi_x = max(Vf + 0.10, sym + 0.05)
+    # x_range = [lo_x, hi_x]
     y_range = x_range
 
     # Create core S(V) traces
@@ -107,6 +108,15 @@ def plot_sv_curve(data):
         showlegend=False,
     )
 
+    VfSf_trace = go.Scatter(
+        x=[Vf],
+        y=[Sf],
+        mode="markers",
+        marker=dict(color="black", symbol="star", size=9),
+        hoverinfo="none",
+        showlegend=False,
+    )
+
     # 'Local' region
 
     local = 10 / 100  # "Local" range = +/– 5%
@@ -116,22 +126,15 @@ def plot_sv_curve(data):
         x=[Vf - delta, Vf - delta],
         y=[0.0, 1.0],
         mode="lines",
-        line=dict(color="lightgrey", width=1, dash="dashdot"),
-        # line=dict(color=shadedColor, width=0.5),
+        line=dict(color="lightgrey", width=1, dash="dot"),
         hoverinfo="none",
         showlegend=False,
     )
     vrVPlusTrace = go.Scatter(
         x=[Vf + delta, Vf + delta],
         y=[0.0, 1.0],
-        # fill="tonextx",
-        # fillcolor=shadedColor,
-        # type="scatter",
-        # name="Uncertainty",
-        # text="uncertainty",
         mode="lines",
-        line=dict(color="lightgrey", width=1, dash="dashdot"),
-        # line=dict(color=shadedColor, width=0.5),
+        line=dict(color="lightgrey", width=1, dash="dot"),
         hoverinfo="none",
         showlegend=False,
     )
@@ -151,7 +154,7 @@ def plot_sv_curve(data):
         x=v_d,
         y=mean_s,
         mode="markers",
-        marker=dict(color="black", symbol="diamond", size=5),
+        marker=dict(color="black", symbol="cross", size=5),
         hoverinfo="none",
         showlegend=False,
         error_y=dict(
@@ -171,9 +174,10 @@ def plot_sv_curve(data):
     # traces.append(h_rule)
     # traces.append(v_rule)
     # traces.append(prop_rule)
-    traces.append(Vf_rule)
+    # traces.append(Vf_rule)
     traces.append(d_sv_curve)
     traces.append(means_trace)
+    traces.append(VfSf_trace)
 
     # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Layout.html#plotly.graph_objects.Layout
     # For tick formatting

@@ -20,18 +20,12 @@ def plot_sv_curve(data):
     # Housekeeping
 
     svSize = 700 - 25
-
     bgcolor = "#fafafa"
-    # red = "#ff0000"
-    blue = "#0000ff"
-    # shadedColor = "beige"
 
     traces = []
 
     # Set view range
 
-    # lo_x = 0.350
-    # hi_x = 0.650
     sym = 0.5
     lo_x = min(Vf - 0.10, sym - 0.05)
     hi_x = max(Vf + 0.10, sym + 0.05)
@@ -42,15 +36,13 @@ def plot_sv_curve(data):
     v_d = []
     s_d = []
     mean_s = []
-    sem_s_minus = []
-    sem_s_plus = []
+    sem_s = []
 
     for pt in dSVpoints:
         v_d.append(pt["Vf"])
         s_d.append(pt["composite"])
         mean_s.append(pt["MEAN"])
-        sem_s_minus.append(pt["MEAN"] - pt["SEM"])
-        sem_s_plus.append(pt["MEAN"] + pt["SEM"])
+        sem_s.append(pt["SEM"])
 
     # Make horizontal and vertical rules @ 0.50. And proportional rule.
 
@@ -151,7 +143,7 @@ def plot_sv_curve(data):
         y=s_d,
         mode="lines",
         name="Inferred S(V) curve",
-        line=dict(color=blue, width=1),
+        line=dict(color="black", width=0.5),
         # hovertemplate=hoverTemplate,
         showlegend=False,
     )
@@ -159,12 +151,16 @@ def plot_sv_curve(data):
         x=v_d,
         y=mean_s,
         mode="markers",
-        marker=dict(color="black", symbol="diamond", size=3),
+        marker=dict(color="black", symbol="diamond", size=5),
         showlegend=False,
+        error_y=dict(
+            type="data",  # value of error bar given in data coordinates
+            array=sem_s,
+            visible=True,
+            color="black",
+            width=1,
+        ),
     )
-
-    # Error bars
-    # https://plotly.com/chart-studio-help/make-a-graph-with-error-bars/
 
     # Add traces in the right order
 
@@ -189,37 +185,20 @@ def plot_sv_curve(data):
         xaxis=dict(
             title="Vote %",
             range=x_range,
-            # tickmode="linear",
-            # ticks="outside",
-            # tick0=0.0,
             dtick=0.05,
             tickformat=".0%",
-            # showline=True,
             showgrid=True,
-            # showticklabels=True,
-            # linecolor="black",
             gridcolor="lightgrey",
-            # tickcolor="black",
-            # ticklabelposition="outside",
         ),
         yaxis=dict(
-            # range=[0.0, 1.0], tickmode="linear", ticks="outside", tick0=0, dtick=0.25
             title="Seat %",
             range=y_range,
             scaleanchor="x",
             scaleratio=1,
-            # tickmode="linear",
-            # ticks="outside",
-            # tick0=0.0,
             dtick=0.05,
             tickformat=".0%",
-            # showline=True,
             showgrid=True,
-            # showticklabels=True,
-            # linecolor="black",
             gridcolor="lightgrey",
-            # tickcolor="black",
-            # ticklabelposition="outside",
         ),
         dragmode="zoom",
         hovermode="closest",

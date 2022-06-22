@@ -19,7 +19,7 @@
 # $ scripts/analyze_map.sh HI 2022 P2020 P2016 S2018 S2016 G2018       
 # $ scripts/analyze_map.sh IA 2022 P2020 P2016 S2020 S2016 G2018 AG2018
 # $ scripts/analyze_map.sh ID 2022 P2020 P2016 S2020 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh IL 2022 P2020 P2016 S2020 S2016 G2018 AG2018
+# $ scripts/analyze_map.sh IL 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<<
 # $ scripts/analyze_map.sh IN 2022 P2020 P2016 S2018 S2016 G2020 AG2020
 # $ scripts/analyze_map.sh KS 2022 P2020 P2016 S2020 S2016 G2018 AG2018
 # $ scripts/analyze_map.sh KY 2022       P2016 S2016       G2019 AG2019
@@ -44,7 +44,7 @@
 # $ scripts/analyze_map.sh OR 2022 P2020 P2016 S2020 S2016 G2018 AG2020 
 # $ scripts/analyze_map.sh PA 2022 P2020 P2016 S2018 S2016 G2018 AG2020 
 # $ scripts/analyze_map.sh RI 2022 P2020 P2016 S2020 S2018 G2018 AG2018 
-# $ scripts/analyze_map.sh SC 2022 P2020 P2016 S2020 S2016 G2018 AG2018 
+# $ scripts/analyze_map.sh SC 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<<
 # $ scripts/analyze_map.sh TN 2022 P2020 P2016 S2020 S2018 G2018       
 # $ scripts/analyze_map.sh TX 2022 P2020 P2016 S2020 S2018 G2018 AG2018
 # $ scripts/analyze_map.sh UT 2022 P2020 P2012 S2018 S2016 G2020 AG2020

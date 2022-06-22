@@ -33,16 +33,12 @@ try:
 
     verbose = args.verbose
 
-    # Read the temp file w/o stats
+    in_path = xx + year + "-SV-data.pickle"
 
-    # in_path = xx + year + "-" + "SV-points" + ".csv"
-    # # Vf, composite, P2020, P2016, S2020, S2016, G2020, AG2020, MEAN, SEM, STDEV
-    # types = [float] * 11
+    data = read_pickle(in_path)
+    data["name"] = xx + " " + year + " Congress"
 
-    # rows = read_typed_csv(in_path, types)
-
-    # TODO - Plot S(V) curve
-    plot_sv_curve()
+    plot_sv_curve(data)
 
 except:
     raise Exception("Exception reading input file")

@@ -155,6 +155,16 @@ def plot_sv_curve(data):
         # hovertemplate=hoverTemplate,
         showlegend=False,
     )
+    means_trace = go.Scatter(
+        x=v_d,
+        y=mean_s,
+        mode="markers",
+        marker=dict(color="black", symbol="diamond", size=3),
+        showlegend=False,
+    )
+
+    # Error bars
+    # https://plotly.com/chart-studio-help/make-a-graph-with-error-bars/
 
     # Add traces in the right order
 
@@ -166,6 +176,7 @@ def plot_sv_curve(data):
     # traces.append(prop_rule)
     traces.append(Vf_rule)
     traces.append(d_sv_curve)
+    traces.append(means_trace)
 
     # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Layout.html#plotly.graph_objects.Layout
     # For tick formatting

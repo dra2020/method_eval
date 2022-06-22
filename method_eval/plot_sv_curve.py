@@ -41,11 +41,16 @@ def plot_sv_curve(data):
     # Create core S(V) traces
     v_d = []
     s_d = []
+    mean_s = []
+    sem_s_minus = []
+    sem_s_plus = []
 
     for pt in dSVpoints:
         v_d.append(pt["Vf"])
         s_d.append(pt["composite"])
-        # TODO - More ...
+        mean_s.append(pt["MEAN"])
+        sem_s_minus.append(pt["MEAN"] - pt["SEM"])
+        sem_s_plus.append(pt["MEAN"] + pt["SEM"])
 
     # Make horizontal and vertical rules @ 0.50. And proportional rule.
 
@@ -155,10 +160,10 @@ def plot_sv_curve(data):
 
     traces.append(vrVMinusTrace)
     traces.append(vrVPlusTrace)
-    traces.append(prop2_rule)
+    # traces.append(prop2_rule)
     # traces.append(h_rule)
     # traces.append(v_rule)
-    traces.append(prop_rule)
+    # traces.append(prop_rule)
     traces.append(Vf_rule)
     traces.append(d_sv_curve)
 

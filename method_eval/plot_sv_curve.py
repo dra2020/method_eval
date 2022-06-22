@@ -24,12 +24,17 @@ def plot_sv_curve(data):
     bgcolor = "#fafafa"
     # red = "#ff0000"
     blue = "#0000ff"
+    shadedColor = "beige"
+
     traces = []
 
     # Set view range
 
-    lo_x = 0.350
-    hi_x = 0.650
+    # lo_x = 0.350
+    # hi_x = 0.650
+    sym = 0.5
+    lo_x = min(Vf - 0.10, sym - 0.05)
+    hi_x = max(Vf + 0.10, sym + 0.05)
     x_range = [lo_x, hi_x]
     y_range = x_range
 
@@ -93,7 +98,6 @@ def plot_sv_curve(data):
 
     # 'Local' region
 
-    shadedColor = "whitesmoke"
     local = 5 / 100  # "Local" range = 5%
     delta = local / 2
 
@@ -101,20 +105,22 @@ def plot_sv_curve(data):
         x=[Vf - delta, Vf - delta],
         y=[0.0, 1.0],
         mode="lines",
-        line=dict(color=shadedColor, width=0.5),
+        line=dict(color="black", width=0.5, dash="dashdot"),
+        # line=dict(color=shadedColor, width=0.5),
         hoverinfo="none",
         showlegend=False,
     )
     vrVPlusTrace = go.Scatter(
         x=[Vf + delta, Vf + delta],
         y=[0.0, 1.0],
-        fill="tonextx",
-        fillcolor=shadedColor,
-        type="scatter",
-        name="Uncertainty",
-        text="uncertainty",
+        # fill="tonextx",
+        # fillcolor=shadedColor,
+        # type="scatter",
+        # name="Uncertainty",
+        # text="uncertainty",
         mode="lines",
-        line=dict(color=shadedColor, width=0.5),
+        line=dict(color="black", width=0.5, dash="dashdot"),
+        # line=dict(color=shadedColor, width=0.5),
         hoverinfo="none",
         showlegend=False,
     )

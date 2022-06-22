@@ -109,7 +109,7 @@ def plot_sv_curve(data):
 
     # 'Local' region
 
-    local = 5 / 100  # "Local" range = 5%
+    local = 10 / 100  # "Local" range = +/– 5%
     delta = local / 2
 
     vrVMinusTrace = go.Scatter(
@@ -144,7 +144,7 @@ def plot_sv_curve(data):
         mode="lines",
         name="Inferred S(V) curve",
         line=dict(color="black", width=0.5),
-        # hovertemplate=hoverTemplate,
+        hoverinfo="none",
         showlegend=False,
     )
     means_trace = go.Scatter(
@@ -152,6 +152,7 @@ def plot_sv_curve(data):
         y=mean_s,
         mode="markers",
         marker=dict(color="black", symbol="diamond", size=5),
+        hoverinfo="none",
         showlegend=False,
         error_y=dict(
             type="data",  # value of error bar given in data coordinates

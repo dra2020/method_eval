@@ -23,10 +23,12 @@ def plot_sv_curve(data):
 
     bgcolor = "#fafafa"
     # red = "#ff0000"
-    # blue = "#0000ff"
+    blue = "#0000ff"
     traces = []
     # x_range = [0.0, 1.0]
     # y_range = [0.0, 1.0]
+
+    # TODO - Set view range
 
     sym = 0.5
     S_EG = 0.5 + (2.0 * (Vf - 0.5))
@@ -37,6 +39,15 @@ def plot_sv_curve(data):
 
     x_range = [lo_x, hi_x]
     y_range = x_range
+
+    # Create core S(V) traces
+    v_d = []
+    s_d = []
+
+    for pt in dSVpoints:
+        v_d.append(pt["Vf"])
+        s_d.append(pt["composite"])
+        # TODO - More ...
 
     # Make horizontal and vertical rules @ 0.50. And proportional rule.
 
@@ -87,12 +98,24 @@ def plot_sv_curve(data):
         showlegend=False,
     )
 
+    # const hoverTemplate = 'Vote %: %{x:5.2%}, Seat %: %{y:5.2%}<extra></extra>';
+    d_sv_curve = go.Scatter(
+        x=v_d,
+        y=s_d,
+        mode="lines",
+        name="Inferred S(V) curve",
+        line=dict(color=blue),
+        # hovertemplate=hoverTemplate,
+        showlegend=False,
+    )
+
     # Add traces in the right order
 
     traces.append(h_rule)
     traces.append(v_rule)
     traces.append(prop_rule)
     traces.append(prop2_rule)
+    traces.append(d_sv_curve)
 
     # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Layout.html#plotly.graph_objects.Layout
     # For tick formatting

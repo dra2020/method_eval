@@ -57,10 +57,20 @@ def plot_rv_graph(data):
     # Step 6 - Create an array of district ranks that correspond to the 1–N ordering.
     districtRanks = [rank(i + 1, N) for i in range(0, N)]
 
-    # TODO - HERE
     # Step 7 - Split the sorted Vf, rank, and label arrays into R and D subsets.
 
-    ###
+    nRWins = len([x for x in sortedVfArray if x <= 0.5])  # Ties credited to R's
+    rWinVfs = sortedVfArray[0:nRWins]
+    rWinRanks = districtRanks[0:nRWins]
+    rWinLabels = sortedLabels[0:nRWins]
+
+    dWinVfs = sortedVfArray[nRWins:]
+    dWinRanks = districtRanks[nRWins:]
+    dWinLabels = sortedLabels[nRWins:]
+
+    # TODO - HERE
+
+    ### DELETE ###
 
     B = np.linspace(0.35, 0.65, 100)
 

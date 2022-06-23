@@ -14,6 +14,7 @@ from math import erf, sqrt, isclose
 
 def plot_rv_graph(data):
     # Bind data
+    name = data["name"]
     Vf = data["Vf"]
     avgDWin = data["avgDWin"]
     avgRWin = data["avgRWin"]
@@ -29,13 +30,19 @@ def plot_rv_graph(data):
     # Housekeeping
 
     rvSize = 700 - 25
+    diagramWidth = rvSize
+    shadedColor = "beige"
+    delta = 5 / 100  # COMPETITIVE: 0.5 +/– 0.05
+    N = len(byDistrict)
+    W = diagramWidth * (2 / 3)
+    markerSize = min(max(1, round(W / N)), 12)
+
     bgcolor = "#fafafa"
     traces = []
 
-    # Extract r(v) graph data - cloned from the TypeScript implementation in DRA proper
+    # EXTRACT R(V) GRAPH DATA
 
     # Step 1 - The districts are already sorted
-    N = len(byDistrict)
     minVf = byDistrict[0]["composite"]
     maxVf = byDistrict[-1]["composite"]
 
@@ -68,45 +75,62 @@ def plot_rv_graph(data):
     dWinRanks = districtRanks[nRWins:]
     dWinLabels = sortedLabels[nRWins:]
 
+    # CREATE THE TRACES
+
+    repWinTrace = go.Scatter(
+        x=rWinRanks,
+        y=rWinVfs,
+        mode="markers",
+        type="scatter",
+        text=rWinLabels,
+        marker=dict(color="black", symbol="square", size=markerSize),
+        hoverinfo="none",
+        showlegend=False,
+    )
+
     # TODO - HERE
 
-    ### DELETE ###
+    # Add traces in the right order
 
-    B = np.linspace(0.35, 0.65, 100)
+    traces.append(repWinTrace)
 
-    A = [(1 - est_seat_probability(i)) for i in B]
-    r = [est_district_responsiveness(i) for i in B]
+    # The r(v) plot layout
 
-    trace1 = go.Scatter(
-        x=B, y=A, mode="lines", name="Probability of party A seat", marker=dict(size=3)
-    )
+    rankRange = [0.0, 1.0]
+    vfRange = [max(minVf - 0.025, 0.0), min(maxVf + 0.025, 1.0)]
 
-    trace2 = go.Scatter(
-        x=B, y=r, mode="lines", name="Responsiveness fraction", marker=dict(size=3)
-    )
+    heightPct = vfRange[1] - vfRange[0]
+    diagramHeight = 700 if ((heightPct * diagramWidth) > 450) else 450
 
-    layout = go.Layout(
-        title="Seat Probability & Responsiveness",
+    rvLayout = go.Layout(
+        title=name,
+        width=diagramWidth,
+        height=diagramHeight,
         xaxis=dict(
-            title="Fraction that voted for party B",
-            range=[0.35, 0.65],
-            tickmode="linear",
-            ticks="outside",
-            tick0=0.35,
-            dtick=0.05,
+            title="District",
+            range=rankRange,
+            showgrid=False,
+            zeroline=False,
+            showticklabels=False,
         ),
         yaxis=dict(
-            range=[0.0, 1.0], tickmode="linear", ticks="outside", tick0=0, dtick=0.25
+            title="D Vote %",
+            range=vfRange,
+            scaleanchor="x",
+            scaleratio=1,
+            showgrid=True,
+            zeroline=False,
+            # tickformat: '%{y:5.2%}' TODO
         ),
+        # dragmode='zoom',
+        # hovermode='closest',
+        showlegend=False,
+        paper_bgcolor=bgcolor,
+        plot_bgcolor=bgcolor,
     )
 
-    traces.append(trace1)
-    traces.append(trace2)
-
-    ###
-
     # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html
-    fig = go.Figure(data=traces, layout=layout)
+    fig = go.Figure(data=traces, layout=rvLayout)
     py.plot(fig, filename="rv-graph")
 
 
@@ -124,14 +148,3 @@ def distance(pt1, pt2):
     d = sqrt(((pt2[X] - pt1[X]) ** 2) + ((pt2[Y] - pt1[Y]) ** 2))
 
     return d
-
-
-### DELETE ###
-
-
-def est_seat_probability(vpi):
-    return 0.5 * (1 + erf((vpi - 0.50) / (0.02 * sqrt(8))))
-
-
-def est_district_responsiveness(vpi):
-    return 1 - 4 * (est_seat_probability(vpi) - 0.5) ** 2

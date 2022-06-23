@@ -178,7 +178,7 @@ def plot_sv_curve(data):
     # For tick formatting
     # https://github.com/d3/d3-format/tree/v1.4.5#d3-format
 
-    layout = go.Layout(
+    svLayout = go.Layout(
         title=name,
         width=svSize,
         height=svSize,
@@ -208,5 +208,5 @@ def plot_sv_curve(data):
     )
 
     # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html
-    fig = go.Figure(data=traces, layout=layout)
+    fig = go.Figure(data=traces, layout=svLayout)
     py.plot(fig, filename="SV-curve")

@@ -26,12 +26,8 @@ def plot_sv_curve(data):
 
     # Set view range
 
-    x_range = [0.25, 0.75]
-    # sym = 0.5
-    # lo_x = min(Vf - 0.10, sym - 0.05)
-    # hi_x = max(Vf + 0.10, sym + 0.05)
-    # x_range = [lo_x, hi_x]
-    y_range = x_range
+    x_range = [max(0.0, Vf - 0.10), min(1.0, Vf + 0.10)]
+    y_range = [max(0.0, Sf - 0.10), min(1.0, Sf + 0.10)]
 
     # Create core S(V) traces
     v_d = []

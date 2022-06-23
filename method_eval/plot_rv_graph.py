@@ -13,19 +13,18 @@ from math import erf, sqrt, isclose
 
 
 def plot_rv_graph(data):
-    """
-    Input:
+    # Bind data
+    Vf = data["Vf"]
+    avgDWin = data["avgDWin"]
+    avgRWin = data["avgRWin"]
+    decl = data["decl"]
+    Sb = data["rvPoints"]["Sb"]
+    Ra = data["rvPoints"]["Ra"]
+    Rb = data["rvPoints"]["Rb"]
+    Va = data["rvPoints"]["Va"]
+    Vb = data["rvPoints"]["Vb"]
 
-    const statewideVf = this.profile.statewide;
-
-    const avgDWin = this.scorecard.averageDVf;
-    const avgRWin = this.scorecard.averageRVf;
-    const decl = this.scorecard.bias.decl;
-    const { Sb, Ra, Rb, Va, Vb } = this.scorecard.bias.rvPoints;
-
-    const unsortedVfArray = this.profile.byDistrict;
-
-    """
+    byDistrict = data["byDistrict"]
 
     # Housekeeping
 

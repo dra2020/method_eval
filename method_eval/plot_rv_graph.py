@@ -11,6 +11,13 @@ import plotly.graph_objs as go  # https://plotly.com/python-api-reference/plotly
 import numpy as np
 from math import erf, sqrt, isclose
 
+"""
+TODO
+- Make markers smaller
+- Add district labels
+- Add error bars
+"""
+
 
 def plot_rv_graph(data):
     # Bind data
@@ -71,7 +78,6 @@ def plot_rv_graph(data):
 
     # CREATE THE TRACES
 
-    # TODO - Add district labels
     repWinTrace = go.Scatter(
         x=rWinRanks,
         y=rWinVfs,
@@ -89,10 +95,18 @@ def plot_rv_graph(data):
         mode="markers",
         type="scatter",
         text=dWinLabels,
-        marker=dict(color="black", symbol="square-open", size=markerSize),
+        marker=dict(
+            color="white",
+            symbol="square",
+            size=markerSize,
+            line=dict(color="black", width=2),
+        ),
         hoverinfo="none",
         showlegend=False,
     )
+
+    """
+    ### NOT USED ###
 
     hr50Trace = go.Scatter(
         x=[0.0, 1.0],
@@ -104,9 +118,34 @@ def plot_rv_graph(data):
         showlegend=False,
     )
 
-    # traces.append(hr50Trace)
-    traces.append(repWinTrace)
-    traces.append(demWinTrace)
+    statewideVfTrace = go.Scatter(
+        x=[0.0, 1.0],
+        y=[Vf, Vf],
+        type="scatter",
+        mode="lines",
+        line=dict(color="black", width=1, dash="dashdot"),
+        hoverinfo="none",
+        showlegend=False,
+    )
+
+    vrRuleHeight = 0.10
+    invertedPRSfXs = [(1.0 - Vf), (1.0 - Vf)]
+    prSfYs = [Vf - vrRuleHeight, Vf + vrRuleHeight]
+    # Why does this trace show slightly offset from the pivot point?
+    proportionalSfTrace = go.Scatter(
+        x=invertedPRSfXs,
+        y=prSfYs,
+        type="scatter",
+        mode="lines",
+        line=dict(color="black", width=1, dash="dashdot"),
+        hoverinfo="none",
+        showlegend=False,
+    )
+
+    traces.append(hr50Trace)
+    traces.append(proportionalSfTrace)
+    traces.append(statewideVfTrace)
+    """
 
     if decl > 0:
         X = 0
@@ -155,14 +194,11 @@ def plot_rv_graph(data):
         )
         traces.append(dDeclTrace)
 
-        # pivotPtLabel = AU.formatNumber(decl, AU.Meta.decl.units) + AU.unitsSymbol(AU.Meta.decl.units);
-        # pivotPtHoverTemplate = pivotPtLabel + '<extra></extra>';
         pivotPtTrace = go.Scatter(
             x=pivotDeclXs,
             y=pivotDeclYs,
             mode="markers",
             type="scatter",
-            # name: 'Declination: ' + pivotPtLabel,
             marker=dict(
                 color="white",
                 symbol="circle",
@@ -170,9 +206,7 @@ def plot_rv_graph(data):
                 line=dict(color="black", width=2),
             ),
             hoverinfo="none",
-            showlegend=False
-            #   hovertemplate: pivotPtHoverTemplate,
-            #   showlegend: true
+            showlegend=False,
         )
 
         # Make the dotted line extension of the R trace, if decl is significant
@@ -213,6 +247,9 @@ def plot_rv_graph(data):
         # Add the pivot point *after* a potential dotted line, so that it's on "top"
         traces.append(pivotPtTrace)
 
+    traces.append(repWinTrace)
+    traces.append(demWinTrace)
+
     # The r(v) plot layout
 
     rankRange = [0.0, 1.0]
@@ -242,8 +279,6 @@ def plot_rv_graph(data):
             showgrid=True,
             gridcolor="lightgrey",
         ),
-        # dragmode='zoom',
-        # hovermode='closest',
         showlegend=False,
         paper_bgcolor=bgcolor,
         plot_bgcolor=bgcolor,

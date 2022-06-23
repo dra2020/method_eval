@@ -88,11 +88,23 @@ def plot_rv_graph(data):
         showlegend=False,
     )
 
+    demWinTrace = go.Scatter(
+        x=dWinRanks,
+        y=dWinVfs,
+        mode="markers",
+        type="scatter",
+        text=rWinLabels,
+        marker=dict(color="black", symbol="square-open", size=markerSize),
+        hoverinfo="none",
+        showlegend=False,
+    )
+
     # TODO - HERE
 
     # Add traces in the right order
 
     traces.append(repWinTrace)
+    traces.append(demWinTrace)
 
     # The r(v) plot layout
 

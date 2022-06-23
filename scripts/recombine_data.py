@@ -11,7 +11,6 @@ $ scripts/recombine_data.py NC 2022
 
 import argparse
 import json
-import builtins
 
 from method_eval import *
 
@@ -42,7 +41,7 @@ try:
         p = json.load(f)
 
     Vf = p["statewide"]
-    byDistrict = p["byDistrict"]
+    # byDistrict = p["byDistrict"]
 
     # From scorecard
 
@@ -63,6 +62,13 @@ try:
     types = [float] + [float] * 10
 
     dSVpoints = read_typed_csv(in_path, types)
+
+    # Read the vi-points file w/ stats
+
+    in_path = xx + year + "-" + "vi-points" + ".csv"
+    types = [int] + [float] * 10
+
+    byDistrict = read_typed_csv(in_path, types)
 
     # Populate the output dicts
 

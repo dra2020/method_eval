@@ -41,7 +41,6 @@ try:
         p = json.load(f)
 
     Vf = p["statewide"]
-    # byDistrict = p["byDistrict"]
 
     # From scorecard
 

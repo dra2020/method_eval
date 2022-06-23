@@ -21,7 +21,6 @@ def plot_sv_curve(data):
 
     svSize = 700 - 25
     bgcolor = "#fafafa"
-
     traces = []
 
     # Set view range

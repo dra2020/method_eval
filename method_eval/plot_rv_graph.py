@@ -28,7 +28,37 @@ def plot_rv_graph(data):
 
     # Housekeeping
 
+    rvSize = 700 - 25
+    bgcolor = "#fafafa"
     traces = []
+
+    # Extract r(v) graph data - cloned from the TypeScript implementation in DRA proper
+
+    # Step 1 - The districts are already sorted
+    N = len(byDistrict)
+    minVf = byDistrict[0]["composite"]
+    maxVf = byDistrict[-1]["composite"]
+
+    # Step 2 - Because the districts are already sorted, skip this step.
+    # Step 3 - Ditto
+
+    # Step 4 - Unzip that into separate sorted Vf and sorted districtId arrays.
+    # Step 5 - Create a sorted array of district labels.
+
+    sortedVfArray = []
+    sortedIndexes = []
+    sortedLabels = []
+
+    for i, d in enumerate(byDistrict):
+        sortedVfArray.append(d["composite"])
+        sortedIndexes.append(d["CD"])
+        sortedLabels.append(str(d["CD"]))
+
+    # Step 6 - Create an array of district ranks that correspond to the 1–N ordering.
+    districtRanks = [rank(i + 1, N) for i in range(0, N)]
+
+    # TODO - HERE
+    # Step 7 - Split the sorted Vf, rank, and label arrays into R and D subsets.
 
     ###
 
@@ -70,7 +100,23 @@ def plot_rv_graph(data):
     py.plot(fig, filename="rv-graph")
 
 
-###
+### HELPERS ###
+
+
+def rank(i, n):
+    return (i - 0.5) / n
+
+
+def distance(pt1, pt2):
+    X = 0
+    Y = 1
+
+    d = sqrt(((pt2[X] - pt1[X]) ** 2) + ((pt2[Y] - pt1[Y]) ** 2))
+
+    return d
+
+
+### DELETE ###
 
 
 def est_seat_probability(vpi):

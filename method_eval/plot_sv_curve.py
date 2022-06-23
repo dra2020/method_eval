@@ -210,4 +210,4 @@ def plot_sv_curve(data):
 
     # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html
     fig = go.Figure(data=traces, layout=layout)
-    py.plot(fig, filename="s(v)-curve")
+    py.plot(fig, filename="SV-curve")

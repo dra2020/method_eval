@@ -19,12 +19,6 @@ def plot_rv_graph(data):
     avgDWin = data["avgDWin"]
     avgRWin = data["avgRWin"]
     decl = data["decl"]
-    Sb = data["rvPoints"]["Sb"]
-    Ra = data["rvPoints"]["Ra"]
-    Rb = data["rvPoints"]["Rb"]
-    Va = data["rvPoints"]["Va"]
-    Vb = data["rvPoints"]["Vb"]
-
     byDistrict = data["byDistrict"]
 
     # Housekeeping
@@ -77,7 +71,7 @@ def plot_rv_graph(data):
 
     # CREATE THE TRACES
 
-    # TOD) - Add district labels
+    # TODO - Add district labels
     repWinTrace = go.Scatter(
         x=rWinRanks,
         y=rWinVfs,
@@ -110,13 +104,114 @@ def plot_rv_graph(data):
         showlegend=False,
     )
 
-    # TODO - HERE
-
-    # Add traces in the right order
-
     # traces.append(hr50Trace)
     traces.append(repWinTrace)
     traces.append(demWinTrace)
+
+    if decl > 0:
+        X = 0
+        Y = 1
+
+        Sb = data["rvPoints"]["Sb"]
+        Ra = data["rvPoints"]["Ra"]
+        Rb = data["rvPoints"]["Rb"]
+        Va = data["rvPoints"]["Va"]
+        Vb = data["rvPoints"]["Vb"]
+
+        # Convert R vote shares (used in dra-score for 'decl') to D vote shares
+
+        rDeclPt = [(1 - Ra), (1 - Va)]
+        dDeclPt = [(1 - Rb), (1 - Vb)]
+        pivotDeclPt = [(1 - Sb), 0.5]
+
+        # Make traces for the R & D line segments and the pivot point
+
+        rDeclXs = [rDeclPt[X], pivotDeclPt[X]]
+        rDeclYs = [rDeclPt[Y], pivotDeclPt[Y]]
+        dDeclXs = [pivotDeclPt[X], dDeclPt[X]]
+        dDeclYs = [pivotDeclPt[Y], dDeclPt[Y]]
+        pivotDeclXs = [pivotDeclPt[X]]
+        pivotDeclYs = [pivotDeclPt[Y]]
+
+        rDeclTrace = go.Scatter(
+            x=rDeclXs,
+            y=rDeclYs,
+            mode="lines",
+            type="scatter",
+            line=dict(color="black", width=1),
+            hoverinfo="none",
+            showlegend=False,
+        )
+        traces.append(rDeclTrace)
+
+        dDeclTrace = go.Scatter(
+            x=dDeclXs,
+            y=dDeclYs,
+            mode="lines",
+            type="scatter",
+            line=dict(color="black", width=1),
+            hoverinfo="none",
+            showlegend=False,
+        )
+        traces.append(dDeclTrace)
+
+        # pivotPtLabel = AU.formatNumber(decl, AU.Meta.decl.units) + AU.unitsSymbol(AU.Meta.decl.units);
+        # pivotPtHoverTemplate = pivotPtLabel + '<extra></extra>';
+        pivotPtTrace = go.Scatter(
+            x=pivotDeclXs,
+            y=pivotDeclYs,
+            mode="markers",
+            type="scatter",
+            # name: 'Declination: ' + pivotPtLabel,
+            marker=dict(
+                color="white",
+                symbol="circle",
+                size=10,
+                line=dict(color="black", width=2),
+            ),
+            hoverinfo="none",
+            showlegend=False
+            #   hovertemplate: pivotPtHoverTemplate,
+            #   showlegend: true
+        )
+
+        # Make the dotted line extension of the R trace, if decl is significant
+        declThreshold = 5
+
+        if abs(decl) > declThreshold:
+            rDy = pivotDeclPt[Y] - rDeclPt[Y]
+            rDx = pivotDeclPt[X] - rDeclPt[X]
+            dDy = dDeclPt[Y] - pivotDeclPt[Y]
+            dDx = dDeclPt[X] - pivotDeclPt[X]
+
+            slope = rDy / rDx
+
+            dDistance = distance(
+                [pivotDeclPt[X], pivotDeclPt[Y]], [dDeclPt[X], dDeclPt[Y]]
+            )
+            rDistance = distance(
+                [rDeclPt[X], rDeclPt[Y]], [pivotDeclPt[X], pivotDeclPt[Y]]
+            )
+            ratio = dDistance / rDistance
+
+            beyondPt = [pivotDeclPt[X] + (ratio * rDx), pivotDeclPt[Y] + (ratio * rDy)]
+
+            beyondDeclXs = [pivotDeclPt[X], beyondPt[X]]
+            beyondDeclYs = [pivotDeclPt[Y], beyondPt[Y]]
+
+            dottedDeclTrace = go.Scatter(
+                x=beyondDeclXs,
+                y=beyondDeclYs,
+                mode="lines",
+                type="scatter",
+                line=dict(color="black", width=1, dash="dash"),
+                hoverinfo="none",
+                showlegend=False,
+            )
+            traces.append(dottedDeclTrace)
+
+        # Add the pivot point *after* a potential dotted line, so that it's on "top"
+        traces.append(pivotPtTrace)
 
     # The r(v) plot layout
 

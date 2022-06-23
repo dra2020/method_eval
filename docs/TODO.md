@@ -1,1 +1,0 @@
-- Update stats for SC to ignore N/A values

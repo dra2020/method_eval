@@ -26,8 +26,11 @@ def plot_sv_curve(data):
 
     # Set view range
 
-    x_range = [max(0.0, Vf - 0.10), min(1.0, Vf + 0.10)]
-    y_range = [max(0.0, Sf - 0.10), min(1.0, Sf + 0.10)]
+    local = 10 / 100  # "Local" range = +/– 5%
+    delta = local / 2
+
+    x_range = [max(0.0, Vf - (2 * delta)), min(1.0, Vf + (2 * delta))]
+    y_range = [max(0.0, Sf - (2 * delta)), min(1.0, Sf + (2 * delta))]
 
     # Create core S(V) traces
     v_d = []
@@ -114,9 +117,6 @@ def plot_sv_curve(data):
     )
 
     # 'Local' region
-
-    local = 10 / 100  # "Local" range = +/– 5%
-    delta = local / 2
 
     vrVMinusTrace = go.Scatter(
         x=[Vf - delta, Vf - delta],

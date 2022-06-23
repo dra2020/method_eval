@@ -77,6 +77,7 @@ def plot_rv_graph(data):
 
     # CREATE THE TRACES
 
+    # TOD) - Add district labels
     repWinTrace = go.Scatter(
         x=rWinRanks,
         y=rWinVfs,
@@ -93,8 +94,18 @@ def plot_rv_graph(data):
         y=dWinVfs,
         mode="markers",
         type="scatter",
-        text=rWinLabels,
+        text=dWinLabels,
         marker=dict(color="black", symbol="square-open", size=markerSize),
+        hoverinfo="none",
+        showlegend=False,
+    )
+
+    hr50Trace = go.Scatter(
+        x=[0.0, 1.0],
+        y=[0.5, 0.5],
+        type="scatter",
+        mode="lines",
+        line=dict(color="black", width=1),
         hoverinfo="none",
         showlegend=False,
     )
@@ -103,6 +114,7 @@ def plot_rv_graph(data):
 
     # Add traces in the right order
 
+    # traces.append(hr50Trace)
     traces.append(repWinTrace)
     traces.append(demWinTrace)
 
@@ -130,9 +142,10 @@ def plot_rv_graph(data):
             range=vfRange,
             scaleanchor="x",
             scaleratio=1,
-            showgrid=True,
             zeroline=False,
-            # tickformat: '%{y:5.2%}' TODO
+            tickformat=".0%",
+            showgrid=True,
+            gridcolor="lightgrey",
         ),
         # dragmode='zoom',
         # hovermode='closest',

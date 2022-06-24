@@ -343,7 +343,7 @@ def plot_rv_graph(data):
 
     # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html
     fig = go.Figure(data=traces, layout=rvLayout)
-    py.plot(fig, filename="rv-graph.png")
+    py.plot(fig, filename="rv-graph")
 
 
 ### HELPERS ###

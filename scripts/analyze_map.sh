@@ -115,10 +115,14 @@ cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-vi-points-RAW.csv > _$xx$yy-vi-points-U
 
 ../../scripts/sort_csv.sh _$xx$yy-vi-points-UNSORTED.csv _$xx$yy-vi-points.csv
 
+echo ... calculating statistics ...
+
 ../../scripts/calc_stats.py $xx $yy metrics str
 ../../scripts/calc_stats.py $xx $yy SV-points float
 ../../scripts/calc_stats.py $xx $yy vi-points int
 # ../../scripts/calc_stats.py $xx $yy rv-points str
+
+echo ... pickling plot data ...
 
 ../../scripts/recombine_data.py $xx $yy
 

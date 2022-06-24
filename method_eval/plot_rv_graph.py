@@ -57,11 +57,15 @@ def plot_rv_graph(data):
     sortedVfArray = []
     sortedIndexes = []
     sortedLabels = []
+    sortedMeans = []
+    sortedErrs = []
 
     for i, d in enumerate(byDistrict):
         sortedVfArray.append(d["composite"])
         sortedIndexes.append(d["CD"])
         sortedLabels.append(str(d["CD"]))
+        sortedMeans.append(d["MEAN"])
+        sortedErrs.append(d["SEM"] * 1.96)
 
     # Step 6 - Create an array of district ranks that correspond to the 1–N ordering.
     districtRanks = [rank(i + 1, N) for i in range(0, N)]
@@ -72,10 +76,14 @@ def plot_rv_graph(data):
     rWinVfs = sortedVfArray[0:nRWins]
     rWinRanks = districtRanks[0:nRWins]
     rWinLabels = sortedLabels[0:nRWins]
+    rMeans = sortedMeans[0:nRWins]
+    rErrs = sortedErrs[0:nRWins]
 
     dWinVfs = sortedVfArray[nRWins:]
     dWinRanks = districtRanks[nRWins:]
     dWinLabels = sortedLabels[nRWins:]
+    dMeans = sortedMeans[nRWins:]
+    dErrs = sortedErrs[nRWins:]
 
     # CREATE THE TRACES
 
@@ -89,6 +97,21 @@ def plot_rv_graph(data):
         hoverinfo="none",
         showlegend=False,
     )
+    rMeansTrace = go.Scatter(
+        x=rWinRanks,
+        y=rMeans,
+        mode="markers",
+        marker=dict(color="black", symbol="cross", size=5),
+        hoverinfo="none",
+        showlegend=False,
+        error_y=dict(
+            type="data",  # value of error bar given in data coordinates
+            array=rErrs,
+            visible=True,
+            color="black",
+            width=1,
+        ),
+    )
 
     demWinTrace = go.Scatter(
         x=dWinRanks,
@@ -99,6 +122,21 @@ def plot_rv_graph(data):
         marker=dict(color="black", symbol="square", size=markerSize),
         hoverinfo="none",
         showlegend=False,
+    )
+    dMeansTrace = go.Scatter(
+        x=dWinRanks,
+        y=dMeans,
+        mode="markers",
+        marker=dict(color="black", symbol="cross", size=5),
+        hoverinfo="none",
+        showlegend=False,
+        error_y=dict(
+            type="data",  # value of error bar given in data coordinates
+            array=dErrs,
+            visible=True,
+            color="black",
+            width=1,
+        ),
     )
 
     """
@@ -145,8 +183,10 @@ def plot_rv_graph(data):
 
     if len(rWinVfs) > 0:
         traces.append(repWinTrace)
+        traces.append(rMeansTrace)
     if len(dWinVfs) > 0:
         traces.append(demWinTrace)
+        traces.append(dMeansTrace)
 
     if decl > 0:
         X = 0

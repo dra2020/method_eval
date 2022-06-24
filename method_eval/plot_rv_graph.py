@@ -32,11 +32,12 @@ def plot_rv_graph(data):
 
     rvSize = 700 - 25
     diagramWidth = rvSize
-    shadedColor = "beige"
-    delta = 5 / 100  # COMPETITIVE: 0.5 +/– 0.05
+    # shadedColor = "beige"
+    # delta = 5 / 100  # COMPETITIVE: 0.5 +/– 0.05
     N = len(byDistrict)
-    W = diagramWidth * (2 / 3)
-    markerSize = min(max(1, round(W / N)), 12)
+    # W = diagramWidth * (2 / 3)
+    # markerSize = min(max(1, round(W / N)), 12)
+    markerSize = 5
 
     bgcolor = "#fafafa"
     traces = []
@@ -95,12 +96,7 @@ def plot_rv_graph(data):
         mode="markers",
         type="scatter",
         text=dWinLabels,
-        marker=dict(
-            color="white",
-            symbol="square",
-            size=markerSize,
-            line=dict(color="black", width=2),
-        ),
+        marker=dict(color="black", symbol="square", size=markerSize),
         hoverinfo="none",
         showlegend=False,
     )
@@ -131,7 +127,7 @@ def plot_rv_graph(data):
     vrRuleHeight = 0.10
     invertedPRSfXs = [(1.0 - Vf), (1.0 - Vf)]
     prSfYs = [Vf - vrRuleHeight, Vf + vrRuleHeight]
-    # Why does this trace show slightly offset from the pivot point?
+    # Why does this trace show slightly offset from the pivot point? See v_rule below.
     proportionalSfTrace = go.Scatter(
         x=invertedPRSfXs,
         y=prSfYs,
@@ -146,6 +142,11 @@ def plot_rv_graph(data):
     traces.append(proportionalSfTrace)
     traces.append(statewideVfTrace)
     """
+
+    if len(rWinVfs) > 0:
+        traces.append(repWinTrace)
+    if len(dWinVfs) > 0:
+        traces.append(demWinTrace)
 
     if decl > 0:
         X = 0
@@ -171,6 +172,16 @@ def plot_rv_graph(data):
         dDeclYs = [pivotDeclPt[Y], dDeclPt[Y]]
         pivotDeclXs = [pivotDeclPt[X]]
         pivotDeclYs = [pivotDeclPt[Y]]
+
+        v_rule = go.Scatter(
+            x=[(1 - Sb), (1 - Sb)],
+            y=[0.0, 1.0],
+            mode="lines",
+            line=dict(color="lightgrey", width=1, dash="solid"),
+            hoverinfo="none",
+            showlegend=False,
+        )
+        traces.append(v_rule)
 
         rDeclTrace = go.Scatter(
             x=rDeclXs,
@@ -247,9 +258,6 @@ def plot_rv_graph(data):
         # Add the pivot point *after* a potential dotted line, so that it's on "top"
         traces.append(pivotPtTrace)
 
-    traces.append(repWinTrace)
-    traces.append(demWinTrace)
-
     # The r(v) plot layout
 
     rankRange = [0.0, 1.0]
@@ -286,7 +294,7 @@ def plot_rv_graph(data):
 
     # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html
     fig = go.Figure(data=traces, layout=rvLayout)
-    py.plot(fig, filename="rv-graph")
+    py.plot(fig, filename="rv-graph.png")
 
 
 ### HELPERS ###

@@ -15,7 +15,7 @@ from math import erf, sqrt, isclose
 def plot_rv_graph(data):
     # Bind data
     name = data["name"]
-    # Vf = data["Vf"]
+    Vf = data["Vf"]
     # avgDWin = data["avgDWin"]
     # avgRWin = data["avgRWin"]
     decl = data["decl"]
@@ -169,6 +169,7 @@ def plot_rv_graph(data):
     invertedPRSfXs = [(1.0 - Vf), (1.0 - Vf)]
     prSfYs = [Vf - vrRuleHeight, Vf + vrRuleHeight]
     # Why does this trace show slightly offset from the pivot point? See v_rule below.
+    # This code is uses Vf when it should use Sf!
     proportionalSfTrace = go.Scatter(
         x=invertedPRSfXs,
         y=prSfYs,
@@ -202,22 +203,12 @@ def plot_rv_graph(data):
 
         # Make traces for the R & D line segments and the pivot point
 
-        rDeclXs = [rDeclPt[X], pivotDeclPt[X]]
-        rDeclYs = [rDeclPt[Y], pivotDeclPt[Y]]
-        dDeclXs = [pivotDeclPt[X], dDeclPt[X]]
-        dDeclYs = [pivotDeclPt[Y], dDeclPt[Y]]
-        pivotDeclXs = [pivotDeclPt[X]]
-        pivotDeclYs = [pivotDeclPt[Y]]
+        offset = districtRanks[0]
 
-        v_rule = go.Scatter(
-            x=[(1 - Sb), (1 - Sb)],
-            y=[0.0, 1.0],
-            mode="lines",
-            line=dict(color="lightgrey", width=1, dash="solid"),
-            hoverinfo="none",
-            showlegend=False,
-        )
-        traces.append(v_rule)
+        rDeclXs = [rDeclPt[X] - offset, pivotDeclPt[X] - offset]
+        rDeclYs = [rDeclPt[Y], pivotDeclPt[Y]]
+        dDeclXs = [pivotDeclPt[X] - offset, dDeclPt[X] - offset]
+        dDeclYs = [pivotDeclPt[Y], dDeclPt[Y]]
 
         rDeclTrace = go.Scatter(
             x=rDeclXs,
@@ -242,8 +233,8 @@ def plot_rv_graph(data):
         traces.append(dDeclTrace)
 
         pivotPtTrace = go.Scatter(
-            x=pivotDeclXs,
-            y=pivotDeclYs,
+            x=[pivotDeclPt[X] - offset],
+            y=[pivotDeclPt[Y]],
             mode="markers",
             type="scatter",
             marker=dict(
@@ -262,10 +253,10 @@ def plot_rv_graph(data):
         if abs(decl) > declThreshold:
             rDy = pivotDeclPt[Y] - rDeclPt[Y]
             rDx = pivotDeclPt[X] - rDeclPt[X]
-            dDy = dDeclPt[Y] - pivotDeclPt[Y]
-            dDx = dDeclPt[X] - pivotDeclPt[X]
+            # dDy = dDeclPt[Y] - pivotDeclPt[Y]
+            # dDx = dDeclPt[X] - pivotDeclPt[X]
 
-            slope = rDy / rDx
+            # slope = rDy / rDx
 
             dDistance = distance(
                 [pivotDeclPt[X], pivotDeclPt[Y]], [dDeclPt[X], dDeclPt[Y]]
@@ -277,7 +268,7 @@ def plot_rv_graph(data):
 
             beyondPt = [pivotDeclPt[X] + (ratio * rDx), pivotDeclPt[Y] + (ratio * rDy)]
 
-            beyondDeclXs = [pivotDeclPt[X], beyondPt[X]]
+            beyondDeclXs = [pivotDeclPt[X] - offset, beyondPt[X] - offset]
             beyondDeclYs = [pivotDeclPt[Y], beyondPt[Y]]
 
             dottedDeclTrace = go.Scatter(

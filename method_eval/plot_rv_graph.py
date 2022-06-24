@@ -13,18 +13,16 @@ from math import erf, sqrt, isclose
 
 """
 TODO
-- Make markers smaller
 - Add district labels
-- Add error bars
 """
 
 
 def plot_rv_graph(data):
     # Bind data
     name = data["name"]
-    Vf = data["Vf"]
-    avgDWin = data["avgDWin"]
-    avgRWin = data["avgRWin"]
+    # Vf = data["Vf"]
+    # avgDWin = data["avgDWin"]
+    # avgRWin = data["avgRWin"]
     decl = data["decl"]
     byDistrict = data["byDistrict"]
 
@@ -32,8 +30,6 @@ def plot_rv_graph(data):
 
     rvSize = 700 - 25
     diagramWidth = rvSize
-    # shadedColor = "beige"
-    # delta = 5 / 100  # COMPETITIVE: 0.5 +/– 0.05
     N = len(byDistrict)
     # W = diagramWidth * (2 / 3)
     # markerSize = min(max(1, round(W / N)), 12)
@@ -93,7 +89,13 @@ def plot_rv_graph(data):
         mode="markers",
         type="scatter",
         text=rWinLabels,
-        marker=dict(color="black", symbol="square", size=markerSize),
+        # marker=dict(color="black", symbol="square", size=markerSize),
+        marker=dict(
+            color="white",
+            symbol="square",
+            size=markerSize,
+            line=dict(color="black", width=1),
+        ),
         hoverinfo="none",
         showlegend=False,
     )
@@ -101,7 +103,7 @@ def plot_rv_graph(data):
         x=rWinRanks,
         y=rMeans,
         mode="markers",
-        marker=dict(color="black", symbol="cross", size=5),
+        marker=dict(color="black", symbol="cross", size=markerSize),
         hoverinfo="none",
         showlegend=False,
         error_y=dict(
@@ -119,7 +121,13 @@ def plot_rv_graph(data):
         mode="markers",
         type="scatter",
         text=dWinLabels,
-        marker=dict(color="black", symbol="square", size=markerSize),
+        # marker=dict(color="black", symbol="square", size=markerSize),
+        marker=dict(
+            color="white",
+            symbol="square",
+            size=markerSize,
+            line=dict(color="black", width=1),
+        ),
         hoverinfo="none",
         showlegend=False,
     )
@@ -127,7 +135,7 @@ def plot_rv_graph(data):
         x=dWinRanks,
         y=dMeans,
         mode="markers",
-        marker=dict(color="black", symbol="cross", size=5),
+        marker=dict(color="black", symbol="cross", size=markerSize),
         hoverinfo="none",
         showlegend=False,
         error_y=dict(
@@ -180,13 +188,6 @@ def plot_rv_graph(data):
     traces.append(proportionalSfTrace)
     traces.append(statewideVfTrace)
     """
-
-    if len(rWinVfs) > 0:
-        traces.append(repWinTrace)
-        traces.append(rMeansTrace)
-    if len(dWinVfs) > 0:
-        traces.append(demWinTrace)
-        traces.append(dMeansTrace)
 
     if decl > 0:
         X = 0
@@ -297,6 +298,13 @@ def plot_rv_graph(data):
 
         # Add the pivot point *after* a potential dotted line, so that it's on "top"
         traces.append(pivotPtTrace)
+
+    if len(rWinVfs) > 0:
+        traces.append(rMeansTrace)
+        traces.append(repWinTrace)
+    if len(dWinVfs) > 0:
+        traces.append(dMeansTrace)
+        traces.append(demWinTrace)
 
     # The r(v) plot layout
 

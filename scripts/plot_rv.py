@@ -11,10 +11,10 @@ $ scripts/plot_rv.py NC 2022
 
 import argparse
 
-from method_eval import plot_rv_graph
+from method_eval import read_pickle, plot_rv_graph
 
 
-parser = argparse.ArgumentParser(description="Calculate statistics")
+parser = argparse.ArgumentParser(description="Plot an r(v) graph")
 
 parser.add_argument("state", help="Two-character state abbreviation")
 parser.add_argument("year", help="yyyy year")
@@ -33,16 +33,12 @@ try:
 
     verbose = args.verbose
 
-    # Read the temp file w/o stats
+    in_path = xx + year + "-rv-data.pickle"
 
-    # in_path = xx + year + "-" + "rv-points" + ".csv"
-    # # Vf, composite, P2020, P2016, S2020, S2016, G2020, AG2020, MEAN, SEM, STDEV
-    # types = [float] * 11
+    data = read_pickle(in_path)
+    data["name"] = xx + " " + year + " Congress"
 
-    # rows = read_typed_csv(in_path, types)
-
-    # TODO - Plot r(v) graph
-    plot_rv_graph()
+    plot_rv_graph(data)
 
 except:
     raise Exception("Exception reading input file")

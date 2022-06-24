@@ -14,7 +14,7 @@ import argparse
 from method_eval import read_pickle, plot_sv_curve
 
 
-parser = argparse.ArgumentParser(description="Calculate statistics")
+parser = argparse.ArgumentParser(description="Plot an S(V) curve")
 
 parser.add_argument("state", help="Two-character state abbreviation")
 parser.add_argument("year", help="yyyy year")

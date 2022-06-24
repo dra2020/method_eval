@@ -11,7 +11,7 @@ $ scripts/plot_sv.py NC 2022
 
 import argparse
 
-from method_eval import *
+from method_eval import read_pickle, plot_sv_curve
 
 
 parser = argparse.ArgumentParser(description="Calculate statistics")

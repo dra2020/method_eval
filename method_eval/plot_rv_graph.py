@@ -13,7 +13,7 @@ from math import erf, sqrt, isclose
 
 """
 TODO
-- Add district labels
+- Change units?
 """
 
 
@@ -89,7 +89,7 @@ def plot_rv_graph(data):
         mode="markers",
         type="scatter",
         text=rWinLabels,
-        # marker=dict(color="black", symbol="square", size=markerSize),
+        # marker=dict(color="black", symbol="square-open", size=markerSize),
         marker=dict(
             color="white",
             symbol="square",
@@ -121,7 +121,7 @@ def plot_rv_graph(data):
         mode="markers",
         type="scatter",
         text=dWinLabels,
-        # marker=dict(color="black", symbol="square", size=markerSize),
+        # marker=dict(color="black", symbol="square-open", size=markerSize),
         marker=dict(
             color="white",
             symbol="square",
@@ -326,7 +326,7 @@ def plot_rv_graph(data):
             showticklabels=False,
         ),
         yaxis=dict(
-            title="D Vote %",
+            title="D Vote Fraction",
             range=vfRange,
             scaleanchor="x",
             scaleratio=1,

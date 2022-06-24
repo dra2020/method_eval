@@ -11,7 +11,7 @@ $ scripts/plot_rv.py NC 2022
 
 import argparse
 
-from method_eval import *
+from method_eval import plot_rv_graph
 
 
 parser = argparse.ArgumentParser(description="Calculate statistics")

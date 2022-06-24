@@ -35,13 +35,16 @@ def plot_sv_curve(data):
     v_d = []
     s_d = []
     mean_s = []
-    sem_s = []
+    err_s = []
 
     for pt in dSVpoints:
         v_d.append(pt["Vf"])
         s_d.append(pt["composite"])
         mean_s.append(pt["MEAN"])
-        sem_s.append(pt["SEM"])
+        err_s.append(pt["SEM"] * 1.96)
+
+    """  
+    ### NOT USED ###
 
     # Make horizontal and vertical rules @ 0.50. And proportional rule.
 
@@ -95,7 +98,7 @@ def plot_sv_curve(data):
     # Statewide D vote share
 
     v_Vf = [Vf, Vf, Vf]
-    s_Vf = [0.0, 0.5, 1.0]
+    s_Vf = [0.0, 0.5, 1.0]  
     Vf_rule = go.Scatter(
         x=v_Vf,
         y=s_Vf,
@@ -105,12 +108,18 @@ def plot_sv_curve(data):
         hoverinfo="none",
         showlegend=False,
     )
+    """
 
     VfSf_trace = go.Scatter(
         x=[Vf],
         y=[Sf],
         mode="markers",
-        marker=dict(color="black", symbol="star", size=9),
+        marker=dict(
+            color="white",
+            symbol="star",
+            size=10,
+            line=dict(color="black", width=1),
+        ),
         hoverinfo="none",
         showlegend=False,
     )
@@ -154,7 +163,7 @@ def plot_sv_curve(data):
         showlegend=False,
         error_y=dict(
             type="data",  # value of error bar given in data coordinates
-            array=sem_s,
+            array=err_s,
             visible=True,
             color="black",
             width=1,
@@ -165,11 +174,14 @@ def plot_sv_curve(data):
 
     traces.append(vrVMinusTrace)
     traces.append(vrVPlusTrace)
-    # traces.append(prop2_rule)
-    # traces.append(h_rule)
-    # traces.append(v_rule)
-    # traces.append(prop_rule)
-    # traces.append(Vf_rule)
+    """
+    ### NOT USED ###
+    traces.append(prop2_rule)
+    traces.append(h_rule)
+    traces.append(v_rule)
+    traces.append(prop_rule)
+    traces.append(Vf_rule)
+    """
     traces.append(d_sv_curve)
     traces.append(means_trace)
     traces.append(VfSf_trace)

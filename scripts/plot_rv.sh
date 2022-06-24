@@ -5,6 +5,8 @@
 # For example:
 #
 # $ scripts/plot_rv.sh NC 2022
+# $ scripts/plot_rv.sh IL 2022
+# $ scripts/plot_rv.sh SC 2022
 #
 
 xx=$1

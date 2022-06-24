@@ -11,11 +11,6 @@ import plotly.graph_objs as go  # https://plotly.com/python-api-reference/plotly
 import numpy as np
 from math import erf, sqrt, isclose
 
-"""
-TODO
-- Change units?
-"""
-
 
 def plot_rv_graph(data):
     # Bind data
@@ -189,7 +184,7 @@ def plot_rv_graph(data):
     traces.append(statewideVfTrace)
     """
 
-    if decl > 0:
+    if decl != 0:
         X = 0
         Y = 1
 

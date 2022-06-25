@@ -150,24 +150,30 @@ try:
         print("{},{}".format("METRIC", args.election), file=f)
         # print("{},{}".format("CD", xx), file=f)
         print("{},{:.6f}".format("Vf", Vf), file=f)
-        print("{},{:.6f}".format("S_V", estS), file=f)
         print("{},{:.6f}".format("Sf", estSf), file=f)
+
+        print("{},{:.6f}".format("S_V", estS), file=f)
         print("{},{:.6f}".format("FPTP", fptpS), file=f)
         print("{},{:.6f}".format("PR", bestS), file=f)
+
         print("{},{:.6f}".format("BS_50", bS50), file=f)
         print("{},{:.6f}".format("BV_50", bV50), file=f)
-        print("{},{:.6f}".format("DECL", decl), file=f)
         print("{},{:.6f}".format("GS", gSym), file=f)
         print("{},{:.6f}".format("EG", eG), file=f)
         print("{},{:.6f}".format("BS_V", bSV), file=f)
         print("{},{:.6f}".format("PROP", prop), file=f)
         print("{},{:.6f}".format("MM", mMs), file=f)
-        print("{},{:.6f}".format("TO", tOf), file=f)
         print("{},{:.6f}".format("MM'", mMd), file=f)
         print("{},{:.6f}".format("LO", lO), file=f)
+
+        print("{},{:.6f}".format("TO", tOf), file=f)
+
+        print("{},{:.6f}".format("DECL", decl), file=f)
+
         print("{},{:.6f}".format("R", bigR), file=f)
         print("{},{:.6f}".format("r", littleR), file=f)
         print("{},{:.6f}".format("Rd", rD), file=f)
+
         print("{},{:.6f}".format("L_Vf", lower_Vf), file=f)
         print("{},{:.6f}".format("L_Sf", lower_Sf), file=f)
         print("{},{:.6f}".format("U_Vf", upper_Vf), file=f)

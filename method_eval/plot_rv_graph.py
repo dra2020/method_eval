@@ -66,20 +66,25 @@ def plot_rv_graph(data):
 
     nRWins = len([x for x in sortedVfArray if x <= 0.5])  # Ties credited to R's
     rWinVfs = sortedVfArray[0:nRWins]
-    # HACK
-    rWinRanks = [rank(i + 1, nRWins, Sb) for i in range(0, nRWins)]
+    # DELETE
+    # rWinRanks = [rank(i + 1, nRWins, Sb) for i in range(0, nRWins)]
     # rWinRanks = districtRanks[0:nRWins]
     rWinLabels = sortedLabels[0:nRWins]
     rMeans = sortedMeans[0:nRWins]
     rErrs = sortedErrs[0:nRWins]
 
     dWinVfs = sortedVfArray[nRWins:]
-    # HACK
-    dWinRanks = [rank(i + 1, nRWins, Sb) for i in range(nRWins, N)]
+    # DELETE
+    # dWinRanks = [rank(i + 1, nRWins, Sb) for i in range(nRWins, N)]
     # dWinRanks = districtRanks[nRWins:]
     dWinLabels = sortedLabels[nRWins:]
     dMeans = sortedMeans[nRWins:]
     dErrs = sortedErrs[nRWins:]
+
+    # Revised rank logic
+    bSweep = True if (nRWins == N) or (nRWins == 0) else False
+    Sb = data["rvPoints"]["Sb"]
+    rWinRanks, dWinRanks, rankRange = rankDistricts(N, Sb, nRWins)
 
     # CREATE THE TRACES
 
@@ -147,11 +152,11 @@ def plot_rv_graph(data):
         ),
     )
 
-    if decl != 0:
+    if not bSweep and decl != 0:
         X = 0
         Y = 1
 
-        Sb = data["rvPoints"]["Sb"]
+        # Sb = data["rvPoints"]["Sb"]
         Ra = data["rvPoints"]["Ra"]
         Rb = data["rvPoints"]["Rb"]
         Va = data["rvPoints"]["Va"]
@@ -254,10 +259,10 @@ def plot_rv_graph(data):
 
     # The r(v) plot layout
 
-    # HACK - This keeps the nth district from being cut off
+    # DELETE - This keeps the nth district from being cut off
     # margin = 0.5 * (1 / N)
     # rankRange = [0.0 + margin, 1.0 + margin]
-    rankRange = [0.0, 1.0]
+    # rankRange = [0.0, 1.0]
     vfRange = [max(minVf - 0.025, 0.0), min(maxVf + 0.025, 1.0)]
 
     heightPct = vfRange[1] - vfRange[0]
@@ -298,6 +303,40 @@ def plot_rv_graph(data):
 ### HELPERS ###
 
 
+def rankDistricts(N, Sb, nRWins):
+    """
+    Compute left-to-right district "ranks" for the r(v) graph.
+    - Compute N + 1 ranks, where N is the # of districts.
+      The extra position is to accommodate the pivot point.
+    - Shift the district ranks so that the spacing of all districts and
+      the pivot point is equal.
+    - Make the rank/x-axis be from the first rank minus a pad to the last rank plus a pad.
+
+    - Handle both D & R sweeps, i.e. no pivot point.
+    """
+
+    bSweep = True if (nRWins == N) or (nRWins == 0) else False
+
+    nRanks = N if bSweep else N + 1
+    pivotRank = 1 - Sb
+
+    districtRanks = [(i + 1) / nRanks for i in range(0, nRanks)]
+
+    if not bSweep:
+        shift = pivotRank - districtRanks[nRWins]
+        districtRanks = list(map(lambda x: x + shift, districtRanks))
+
+    rWinRanks = districtRanks[0:nRWins] if nRWins > 0 else []
+    dWinRanks = districtRanks[nRWins + 1 :] if nRWins < N else []
+
+    pad = 0.05
+    rankRange = [districtRanks[0] - pad, districtRanks[-1] + pad]
+
+    return rWinRanks, dWinRanks, rankRange
+
+
+"""
+DELETE
 def rank(i, nRWins, Sb):
     pivot = 1 - Sb
     return (i / pivot) if (i < pivot) else (i / pivot) + 1
@@ -306,6 +345,7 @@ def rank(i, nRWins, Sb):
 def rank_Nagle(i, n):
     # John Nagle's ranking formula so the nth district plots < 1.0
     return (i - 0.5) / n
+"""
 
 
 def distance(pt1, pt2):

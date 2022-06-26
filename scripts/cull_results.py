@@ -114,6 +114,9 @@ try:
     Va = s["bias"]["rvPoints"]["Va"]
     Vb = s["bias"]["rvPoints"]["Vb"]
 
+    averageDVf = s["averageDVf"]
+    averageRVf = s["averageRVf"]
+
     # Add +/– 2% bracketing S(V) points
 
     # For Vf = 0.4873, [0.485, 0.490] => [0.465, 0.510]
@@ -174,25 +177,19 @@ try:
         print("{},{:.6f}".format("r", littleR), file=f)
         print("{},{:.6f}".format("Rd", rD), file=f)
 
-        print("{},{:.6f}".format("L_Vf", lower_Vf), file=f)
-        print("{},{:.6f}".format("L_Sf", lower_Sf), file=f)
-        print("{},{:.6f}".format("U_Vf", upper_Vf), file=f)
-        print("{},{:.6f}".format("U_Sf", upper_Sf), file=f)
-
-    """
-    NO LONGER USED
-    
-    # Write the r(v) points to a file
-
-    out_path = "_" + args.state + args.year + "-" + args.election + "-rv-points.csv"
-    with open(out_path, "w") as f:
-        print("{},{}".format("POINT", args.election), file=f)
         print("{},{:.6f}".format("Sb", Sb), file=f)
         print("{},{:.6f}".format("Ra", Ra), file=f)
         print("{},{:.6f}".format("Rb", Rb), file=f)
         print("{},{:.6f}".format("Va", Va), file=f)
         print("{},{:.6f}".format("Vb", Vb), file=f)
-    """
+
+        print("{},{:.6f}".format("AVG_DVf", averageDVf), file=f)
+        print("{},{:.6f}".format("AVG_RVf", averageRVf), file=f)
+
+        print("{},{:.6f}".format("L_Vf", lower_Vf), file=f)
+        print("{},{:.6f}".format("L_Sf", lower_Sf), file=f)
+        print("{},{:.6f}".format("U_Vf", upper_Vf), file=f)
+        print("{},{:.6f}".format("U_Sf", upper_Sf), file=f)
 
     # Write the v(i) points to a file
 

@@ -19,7 +19,7 @@ import builtins
 import math
 import statistics
 
-from method_eval import *
+from method_eval.helpers import read_typed_csv, write_csv
 
 
 parser = argparse.ArgumentParser(description="Calculate statistics")

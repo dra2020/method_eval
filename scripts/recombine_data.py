@@ -12,7 +12,7 @@ $ scripts/recombine_data.py NC 2022
 import argparse
 import json
 
-from method_eval import *
+from method_eval.helpers import read_typed_csv, write_pickle
 
 
 parser = argparse.ArgumentParser(description="Calculate statistics")

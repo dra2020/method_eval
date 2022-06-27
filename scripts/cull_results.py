@@ -159,24 +159,29 @@ try:
         print("{},{:.6f}".format("FPTP", fptpS), file=f)
         print("{},{:.6f}".format("PR", bestS), file=f)
 
+        # Measures of partisan advantage
+        print("{},{:.6f}".format("EG", eG), file=f)
+        print("{},{:.6f}".format("PROP", prop), file=f)
+
+        # Measures of Partisan Symmetry
         print("{},{:.6f}".format("BS_50", bS50), file=f)
         print("{},{:.6f}".format("BV_50", bV50), file=f)
         print("{},{:.6f}".format("GS", gSym), file=f)
-        print("{},{:.6f}".format("EG", eG), file=f)
         print("{},{:.6f}".format("BS_V", bSV), file=f)
-        print("{},{:.6f}".format("PROP", prop), file=f)
+
+        # Measures of Partisan Gerrymandering
+        print("{},{:.6f}".format("DECL", decl), file=f)
         print("{},{:.6f}".format("MM", mMs), file=f)
+        print("{},{:.6f}".format("TO", tOf), file=f)
         print("{},{:.6f}".format("MM'", mMd), file=f)
         print("{},{:.6f}".format("LO", lO), file=f)
 
-        print("{},{:.6f}".format("TO", tOf), file=f)
-
-        print("{},{:.6f}".format("DECL", decl), file=f)
-
+        # Measures of responsiveness
         print("{},{:.6f}".format("R", bigR), file=f)
         print("{},{:.6f}".format("r", littleR), file=f)
         print("{},{:.6f}".format("Rd", rD), file=f)
 
+        # Key r(v) points
         print("{},{:.6f}".format("Sb", Sb), file=f)
         print("{},{:.6f}".format("Ra", Ra), file=f)
         print("{},{:.6f}".format("Rb", Rb), file=f)

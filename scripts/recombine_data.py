@@ -69,6 +69,13 @@ try:
 
     byDistrict = read_typed_csv(in_path, types)
 
+    # Read the metrics file w/ stats
+
+    in_path = xx + year + "-" + "metrics" + ".csv"
+    types = [str] + [float] * 11
+
+    metrics = read_typed_csv(in_path, types)
+
     # Populate the output dicts
 
     sv_data = {}
@@ -84,13 +91,19 @@ try:
     rv_data["decl"] = decl
     rv_data["rvPoints"] = rvPoints
 
-    # Pickle these native structures for use by S(V) and r(v) plots
+    metrics_data = {}
+    metrics_data["metrics"] = metrics
+
+    # Pickle these native structures for use by plots
 
     out_path = xx + year + "-" + "SV-data" + ".pickle"
     write_pickle(out_path, sv_data)
 
     out_path = xx + year + "-" + "rv-data" + ".pickle"
     write_pickle(out_path, rv_data)
+
+    out_path = xx + year + "-" + "metrics-data" + ".pickle"
+    write_pickle(out_path, metrics_data)
 
 except:
     raise Exception("Exception reading or writing file")

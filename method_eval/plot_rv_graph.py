@@ -56,27 +56,25 @@ def plot_rv_graph(data):
         sortedMeans.append(d["MEAN"])
         sortedErrs.append(d["SEM"] * 1.96)
 
-    # HACK to fix the relative positions of the districts & pivot point
     # Step 6 - Create an array of district ranks that correspond to the 1–N ordering.
-    # districtRanks = [rank(i + 1, N) for i in range(0, N)]
+    districtRanks = [(i + 1) / N for i in range(0, N)]
 
     # Step 7 - Split the sorted Vf, rank, and label arrays into R and D subsets.
 
     nRWins = len([x for x in sortedVfArray if x <= 0.5])  # Ties credited to R's
     rWinVfs = sortedVfArray[0:nRWins]
+    rWinRanks = districtRanks[0:nRWins]
     rWinLabels = sortedLabels[0:nRWins]
     rMeans = sortedMeans[0:nRWins]
     rErrs = sortedErrs[0:nRWins]
 
     dWinVfs = sortedVfArray[nRWins:]
+    dWinRanks = districtRanks[nRWins:]
     dWinLabels = sortedLabels[nRWins:]
     dMeans = sortedMeans[nRWins:]
     dErrs = sortedErrs[nRWins:]
 
-    # Revised rank logic
     bSweep = True if (nRWins == N) or (nRWins == 0) else False
-    Sb = data["rvPoints"]["Sb"]
-    rWinRanks, dWinRanks, rankRange = rankDistricts(N, Sb, nRWins)
 
     # CREATE THE TRACES
 
@@ -146,17 +144,24 @@ def plot_rv_graph(data):
         X = 0
         Y = 1
 
-        # Sb = data["rvPoints"]["Sb"]
+        Sb = data["rvPoints"]["Sb"]
         Ra = data["rvPoints"]["Ra"]
         Rb = data["rvPoints"]["Rb"]
         Va = data["rvPoints"]["Va"]
         Vb = data["rvPoints"]["Vb"]
 
+        # Shift the pivot point to halfway between the R & D districts
+
+        shift = (2 * nRWins + 1) / (2 * N) - (1 - Sb)
+
         # Convert R vote shares (used in dra-score for 'decl') to D vote shares
 
-        rDeclPt = [(1 - Ra), (1 - Va)]
-        dDeclPt = [(1 - Rb), (1 - Vb)]
-        pivotDeclPt = [(1 - Sb), 0.5]
+        pivotDeclPt = [(1 - Sb) + shift, 0.5]
+        # pivotDeclPt = [(1 - Sb), 0.5]
+        rDeclPt = [(1 - Ra) + shift, (1 - Va)]
+        # rDeclPt = [(1 - Ra), (1 - Va)]
+        dDeclPt = [(1 - Rb) + shift, (1 - Vb)]
+        # dDeclPt = [(1 - Rb), (1 - Vb)]
 
         # Make traces for the R & D line segments and the pivot point
 
@@ -250,6 +255,9 @@ def plot_rv_graph(data):
     heightPct = vfRange[1] - vfRange[0]
     diagramHeight = 700 if ((heightPct * diagramWidth) > 450) else 450
 
+    pad = 0.05
+    rankRange = [1 / N - pad, 1 + pad]
+
     rvLayout = go.Layout(
         title=name,
         width=diagramWidth,
@@ -285,36 +293,37 @@ def plot_rv_graph(data):
 ### HELPERS ###
 
 
-def rankDistricts(N, Sb, nRWins):
-    """
-    Compute left-to-right district "ranks" for the r(v) graph.
-    - Compute N + 1 ranks, where N is the # of districts.
-      The extra position is to accommodate the pivot point.
-    - Shift the district ranks so that the spacing of all districts and
-      the pivot point is equal.
-    - Make the rank/x-axis be from the first rank minus a pad to the last rank plus a pad.
+# DELETE
+# def rankDistricts(N, Sb, nRWins):
+#     """
+#     Compute left-to-right district "ranks" for the r(v) graph.
+#     - Compute N + 1 ranks, where N is the # of districts.
+#       The extra position is to accommodate the pivot point.
+#     - Shift the district ranks so that the spacing of all districts and
+#       the pivot point is equal.
+#     - Make the rank/x-axis be from the first rank minus a pad to the last rank plus a pad.
 
-    - Handle both D & R sweeps, i.e. no pivot point.
-    """
+#     - Handle both D & R sweeps, i.e. no pivot point.
+#     """
 
-    bSweep = True if (nRWins == N) or (nRWins == 0) else False
+#     bSweep = True if (nRWins == N) or (nRWins == 0) else False
 
-    nRanks = N if bSweep else N + 1
-    pivotRank = 1 - Sb
+#     nRanks = N if bSweep else N + 1
+#     pivotRank = 1 - Sb
 
-    districtRanks = [(i + 1) / nRanks for i in range(0, nRanks)]
+#     districtRanks = [(i + 1) / nRanks for i in range(0, nRanks)]
 
-    if not bSweep:
-        shift = pivotRank - districtRanks[nRWins]
-        districtRanks = list(map(lambda x: x + shift, districtRanks))
+#     if not bSweep:
+#         shift = pivotRank - districtRanks[nRWins]
+#         districtRanks = list(map(lambda x: x + shift, districtRanks))
 
-    rWinRanks = districtRanks[0:nRWins] if nRWins > 0 else []
-    dWinRanks = districtRanks[nRWins + 1 :] if nRWins < N else []
+#     rWinRanks = districtRanks[0:nRWins] if nRWins > 0 else []
+#     dWinRanks = districtRanks[nRWins + 1 :] if nRWins < N else []
 
-    pad = 0.05
-    rankRange = [districtRanks[0] - pad, districtRanks[-1] + pad]
+#     pad = 0.05
+#     rankRange = [districtRanks[0] - pad, districtRanks[-1] + pad]
 
-    return rWinRanks, dWinRanks, rankRange
+#     return rWinRanks, dWinRanks, rankRange
 
 
 def distance(pt1, pt2):

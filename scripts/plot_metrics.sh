@@ -10,8 +10,6 @@
 # $ scripts/plot_metrics.sh IL 2022 main
 # $ scripts/plot_metrics.sh IL 2022 alt
 #
-# $ scripts/plot_metrics.sh SC 2022 main
-#
 
 xx=$1
 yy=$2

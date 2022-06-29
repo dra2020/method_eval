@@ -7,10 +7,8 @@ For each 2022 congressional map:
 
 ## TODO
 
-- Run the analyze_map.sh script for each state
 - Resolve election issues w/ Dave when he gets back <<< Dave
+- Understand declination sensitivity w/ Greg
+- Dig into GS for NC
 
-- Import results into & format spreadsheets for each state
-- Combine the composite results for each state into all up spreadsheets
-
-- Flesh out research questions
+- Field test NC, IL, and SC w/ Nagle, Eguia, and Dan

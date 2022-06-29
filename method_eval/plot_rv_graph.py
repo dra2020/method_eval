@@ -8,8 +8,10 @@ PLOT r(v) GRAPH
 import chart_studio.plotly as py
 import plotly.graph_objs as go  # https://plotly.com/python-api-reference/plotly.graph_objects.html
 
-import numpy as np
-from math import erf, sqrt, isclose
+from math import sqrt
+
+# import numpy as np
+# from math import erf, sqrt, isclose
 
 
 def plot_rv_graph(data):

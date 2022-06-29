@@ -8,18 +8,25 @@ PLOT METRICS
 import matplotlib.pyplot as plt
 
 
-def plot_metrics(data, metrics):
+def plot_metrics(data, normalize=False):
+    metrics = (
+        ["EG", "PROP", "BS_50", "BV_50", "GS", "BS_V", "MM", "LO"]
+        if not normalize
+        else ["DECL", "R", "r"]
+    )
+
     composites = []
     means = []
     mean_errs = []
 
     for _, m in enumerate(data["metrics"]):
         name = m["METRIC"]
+        base = m["MEAN"] if normalize else 1
         if name in metrics:
-            composites.append(m["composite"])
-            means.append(m["MEAN"])
+            composites.append(m["composite"] / base)
+            means.append(m["MEAN"] / base)
             err = m["SEM"] * 2
-            mean_errs.append([m["MEAN"] - err, m["MEAN"] + err])
+            mean_errs.append([(m["MEAN"] - err) / base, (m["MEAN"] + err) / base])
         else:
             continue
 

@@ -5,7 +5,7 @@ Plot metric
 
 For example:
 
-$ scripts/plot_metrics.py NC 2022
+$ scripts/plot_metrics.py NC 2022 main
 
 """
 
@@ -18,6 +18,7 @@ parser = argparse.ArgumentParser(description="Plot metrics with errors")
 
 parser.add_argument("state", help="Two-character state abbreviation")
 parser.add_argument("year", help="yyyy year")
+parser.add_argument("metrics", help="Metrics")
 
 parser.add_argument(
     "-v", "--verbose", dest="verbose", action="store_true", help="Verbose mode"
@@ -28,6 +29,7 @@ args = parser.parse_args()
 try:
     xx = args.state
     year = args.year
+    metrics = args.metrics
 
     verbose = args.verbose
 
@@ -36,10 +38,9 @@ try:
     data = read_pickle(in_path)
     data["name"] = xx + " " + year + " Congress"
 
-    # TODO
-    metrics = ["EG", "PROP", "BS_50", "BV_50", "GS", "BS_V", "MM", "LO"]
+    bNormalize = False if metrics == "main" else True
 
-    plot_metrics(data, metrics)
+    plot_metrics(data, bNormalize)
 
 except:
     raise Exception("Exception reading input file")

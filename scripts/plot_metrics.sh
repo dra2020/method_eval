@@ -4,22 +4,27 @@
 #
 # For example:
 #
-# $ scripts/plot_metrics.sh NC 2022
-# $ scripts/plot_metrics.sh IL 2022
-# $ scripts/plot_metrics.sh SC 2022
+# $ scripts/plot_metrics.sh NC 2022 main
+# $ scripts/plot_metrics.sh NC 2022 alt
+#
+# $ scripts/plot_metrics.sh IL 2022 main
+# $ scripts/plot_metrics.sh IL 2022 alt
+#
+# $ scripts/plot_metrics.sh SC 2022 main
 #
 
 xx=$1
 yy=$2
+which=$3
 
 echo
-echo Plotting metrics for: $xx $yy
+echo Plotting $which metrics for: $xx $yy
 echo
 
 cd data
 cd $xx
 
-../../scripts/plot_metrics.py $xx $yy
+../../scripts/plot_metrics.py $xx $yy $which
 
 cd ../..
 

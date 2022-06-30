@@ -166,8 +166,8 @@ try:
         # Measures of Partisan Symmetry
         print("{},{:.6f}".format("BS_50", bS50), file=f)
         print("{},{:.6f}".format("BV_50", bV50), file=f)
-        print("{},{:.6f}".format("GS", gSym), file=f)
         print("{},{:.6f}".format("BS_V", bSV), file=f)
+        print("{},{:.6f}".format("GS", gSym), file=f)
 
         # Measures of Partisan Gerrymandering
         print("{},{:.6f}".format("DECL", decl), file=f)

@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 def plot_metrics(data, normalize=False):
     metrics = (
-        ["EG", "PROP", "BS_50", "BV_50", "GS", "BS_V", "MM", "LO"]
+        ["EG", "PROP", "BS_50", "BV_50", "BS_V", "GS", "MM", "LO"]
         if not normalize
         else ["DECL", "R", "r"]
     )

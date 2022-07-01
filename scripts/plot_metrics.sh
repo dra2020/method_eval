@@ -5,10 +5,8 @@
 # For example:
 #
 # $ scripts/plot_metrics.sh NC 2022 main
-# $ scripts/plot_metrics.sh NC 2022 alt
-#
-# $ scripts/plot_metrics.sh IL 2022 main
-# $ scripts/plot_metrics.sh IL 2022 alt
+# $ scripts/plot_metrics.sh NC 2022 responsiveness
+# $ scripts/plot_metrics.sh NC 2022 VS
 #
 
 xx=$1

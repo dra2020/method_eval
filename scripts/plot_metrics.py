@@ -6,6 +6,8 @@ Plot metric
 For example:
 
 $ scripts/plot_metrics.py NC 2022 main
+$ scripts/plot_metrics.py NC 2022 responsiveness
+$ scripts/plot_metrics.py NC 2022 VSf
 
 """
 
@@ -38,9 +40,7 @@ try:
     data = read_pickle(in_path)
     data["name"] = xx + " " + year + " Congress"
 
-    bNormalize = False if metrics == "main" else True
-
-    plot_metrics(data, bNormalize)
+    plot_metrics(data, metrics)
 
 except:
     raise Exception("Exception reading input file")

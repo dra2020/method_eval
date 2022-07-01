@@ -8,12 +8,16 @@ PLOT METRICS
 import matplotlib.pyplot as plt
 
 
-def plot_metrics(data, normalize=False):
-    metrics = (
-        ["EG", "PROP", "BS_50", "BV_50", "BS_V", "GS", "MM", "LO"]
-        if not normalize
-        else ["DECL", "R", "r"]
-    )
+def plot_metrics(data, set):
+    metrics = []
+    if set == "main":
+        metrics = ["EG", "PROP", "BS_50", "BV_50", "BS_V", "GS", "MM", "LO"]
+    elif set == "responsiveness":
+        metrics = ["R", "r"]
+    elif set == "VS":
+        metrics = ["Vf", "Sf"]
+
+    normalize = True if set == "responsiveness" else False
 
     composites = []
     means = []

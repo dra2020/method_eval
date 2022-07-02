@@ -21,5 +21,4 @@ metrics_data = {}
 metrics_data["metrics"] = metrics
 metrics_data["name"] = xx + " " + year + " Congress"
 
-plot_metrics(metrics_data)
-# plot_metrics(metrics_data, normalize=True)
+plot_metrics(metrics_data, "main")

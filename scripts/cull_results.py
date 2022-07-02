@@ -198,7 +198,9 @@ try:
 
     # Write the v(i) points to a file
 
-    out_path = "_" + args.state + args.year + "-" + args.election + "-vi-points.csv"
+    out_path = (
+        "_" + args.state + args.year + "-" + args.election + "-vi-points-BY_CD.csv"
+    )
     with open(out_path, "w") as f:
         print(
             "{},{}".format("CD", args.election),  # + "_" + "Vf"),

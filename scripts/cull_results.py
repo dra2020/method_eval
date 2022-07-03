@@ -191,7 +191,7 @@ try:
         # Measures of responsiveness
         print("{},{:.6f}".format("R", bigR), file=f)
         print("{},{:.6f}".format("r", littleR), file=f)
-        print("{},{:.6f}".format("Rd", rD), file=f)
+        # print("{},{:.6f}".format("Rd", rD), file=f)
 
         # Key r(v) points
         print("{},{:.6f}".format("Sb", Sb), file=f)

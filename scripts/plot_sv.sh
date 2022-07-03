@@ -4,8 +4,8 @@
 #
 # For example:
 #
-# $ scripts/plot_sv.sh NC 2022
 # $ scripts/plot_sv.sh IL 2022
+# $ scripts/plot_sv.sh NC 2022
 # $ scripts/plot_sv.sh SC 2022
 #
 

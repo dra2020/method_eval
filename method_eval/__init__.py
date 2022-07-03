@@ -3,6 +3,7 @@
 from .plot_sv_curve import *
 from .plot_rv_graph import *
 from .plot_metrics import *
+from .decl import *
 from .helpers import *
 from .credentials import *
 

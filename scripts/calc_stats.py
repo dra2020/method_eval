@@ -59,10 +59,12 @@ try:
         row["MEAN"] = round(statistics.mean(values), 6)
         row["SEM"] = round(statistics.stdev(values) / math.sqrt(len(values)), 6)
         # row["STDEV"] = round(statistics.stdev(values), 6)
-        # row["RSE"] = round(row["SEM"] / row["MEAN"], 6)
-        row["Δ"] = round(row["composite"] - row["MEAN"], 6)
+        row["RSE"] = round(row["SEM"] / row["MEAN"], 6)
+        delta = row["composite"] - row["MEAN"]
+        row["Δ"] = round(delta, 6)
+        row["Δ/MEAN"] = round(delta / row["MEAN"], 6)
         row["Δ/SEM"] = (
-            float("nan") if (row["SEM"] == 0) else round(row["Δ"] / row["SEM"], 6)
+            float("nan") if (row["SEM"] == 0) else round(delta / row["SEM"], 6)
         )
 
     # Write the new CSV w/ stats

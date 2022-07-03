@@ -58,21 +58,21 @@ try:
     # Read the SV-points file w/ stats
 
     in_path = xx + year + "-" + "SV-points" + ".csv"
-    types = [float] + [float] * 11
+    types = [float] + [float] * 13
 
     dSVpoints = read_typed_csv(in_path, types)
 
     # Read the vi-points file w/ stats
 
     in_path = xx + year + "-" + "vi-points" + ".csv"
-    types = [int] + [float] * 11
+    types = [int] + [float] * 13
 
     byDistrict = read_typed_csv(in_path, types)
 
     # Read the metrics file w/ stats
 
     in_path = xx + year + "-" + "metrics" + ".csv"
-    types = [str] + [float] * 11
+    types = [str] + [float] * 13
 
     metrics = read_typed_csv(in_path, types)
 

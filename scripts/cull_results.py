@@ -24,7 +24,7 @@ Metrics in metrics file:
 
 * EG = Efficiency gap as a fraction
 * BS_V = Seats bias @ Vf (geometric)
-* PROP = Disproportionality
+* PROP = Disproportionality <<< called "PR" instead of above
 * MM = Mean – median difference using statewide Vf
 * TO = Turnout bias
 * MM' = Mean – median difference using average district v 
@@ -79,27 +79,35 @@ try:
     with open(in_path, "r") as f:
         s = json.load(f)
 
-    bestS = s["bias"]["bestS"]
-    fptpS = s["bias"]["fptpS"]
-    estS = s["bias"]["estS"]
+    # bestS = s["bias"]["bestS"]
+    # fptpS = s["bias"]["fptpS"]
+    # estS = s["bias"]["estS"]
     estSf = s["bias"]["estSf"]
+
+    # Partisan advantage
+
+    eG = s["bias"]["eG"]
+    prop = s["bias"]["prop"]
+    gamma = s["bias"]["gamma"]
+
+    # Partisan symmetry
 
     bS50 = s["bias"]["bS50"]
     bV50 = s["bias"]["bV50"]
-    decl = s["bias"]["decl"] if "decl" in s["bias"] else 0
-    if "decl" not in s["bias"]:
-        print("decl is undefined")
+    bSV = s["bias"]["bSV"]
     gSym = s["bias"]["gSym"]
 
-    eG = s["bias"]["eG"]
-    bSV = s["bias"]["bSV"]
-    prop = s["bias"]["prop"]
+    # Gerrymandering
+
     mMs = s["bias"]["mMs"]
-    tOf = s["bias"]["tOf"]
-    mMd = s["bias"]["mMd"]
+    # tOf = s["bias"]["tOf"]
+    # mMd = s["bias"]["mMd"]
     lO = s["bias"]["lO"] if "lO" in s["bias"] else 0
     if "lO" not in s["bias"]:
         print("LO is undefined")
+    decl = s["bias"]["decl"] if "decl" in s["bias"] else 0
+    if "decl" not in s["bias"]:
+        print("decl is undefined")
 
     # Responsiveness
 
@@ -114,8 +122,8 @@ try:
     Va = s["bias"]["rvPoints"]["Va"]
     Vb = s["bias"]["rvPoints"]["Vb"]
 
-    averageDVf = s["averageDVf"]
-    averageRVf = s["averageRVf"]
+    # averageDVf = s["averageDVf"]
+    # averageRVf = s["averageRVf"]
 
     # Add +/– 2% bracketing S(V) points
 
@@ -155,13 +163,15 @@ try:
         print("{},{:.6f}".format("Vf", Vf), file=f)
         print("{},{:.6f}".format("Sf", estSf), file=f)
 
-        print("{},{:.6f}".format("S_V", estS), file=f)
-        print("{},{:.6f}".format("FPTP", fptpS), file=f)
-        print("{},{:.6f}".format("PR", bestS), file=f)
+        # print("{},{:.6f}".format("S_V", estS), file=f)
+        # print("{},{:.6f}".format("FPTP", fptpS), file=f)
+        # print("{},{:.6f}".format("PR", bestS), file=f)
 
         # Measures of partisan advantage
         print("{},{:.6f}".format("EG", eG), file=f)
-        print("{},{:.6f}".format("PROP", prop), file=f)
+        print("{},{:.6f}".format("PR", prop), file=f)
+        # print("{},{:.6f}".format("PROP", prop), file=f)
+        print("{},{:.6f}".format("GAMMA", gamma), file=f)
 
         # Measures of Partisan Symmetry
         print("{},{:.6f}".format("BS_50", bS50), file=f)
@@ -170,11 +180,13 @@ try:
         print("{},{:.6f}".format("GS", gSym), file=f)
 
         # Measures of Partisan Gerrymandering
-        print("{},{:.6f}".format("DECL", decl), file=f)
+
         print("{},{:.6f}".format("MM", mMs), file=f)
-        print("{},{:.6f}".format("TO", tOf), file=f)
-        print("{},{:.6f}".format("MM'", mMd), file=f)
+        # print("{},{:.6f}".format("TO", tOf), file=f)
+        # print("{},{:.6f}".format("MM'", mMd), file=f)
         print("{},{:.6f}".format("LO", lO), file=f)
+
+        print("{},{:.6f}".format("DECL", decl), file=f)
 
         # Measures of responsiveness
         print("{},{:.6f}".format("R", bigR), file=f)
@@ -188,8 +200,8 @@ try:
         print("{},{:.6f}".format("Va", Va), file=f)
         print("{},{:.6f}".format("Vb", Vb), file=f)
 
-        print("{},{:.6f}".format("AVG_DVf", averageDVf), file=f)
-        print("{},{:.6f}".format("AVG_RVf", averageRVf), file=f)
+        # print("{},{:.6f}".format("AVG_DVf", averageDVf), file=f)
+        # print("{},{:.6f}".format("AVG_RVf", averageRVf), file=f)
 
         print("{},{:.6f}".format("L_Vf", lower_Vf), file=f)
         print("{},{:.6f}".format("L_Sf", lower_Sf), file=f)

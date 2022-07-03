@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 def plot_metrics(data, set):
     metrics = []
     if set == "main":
-        metrics = ["EG", "PROP", "BS_50", "BV_50", "BS_V", "GS", "MM", "LO"]
+        metrics = ["EG", "PR", "GAMMA", "BS_50", "BV_50", "BS_V", "GS", "MM", "LO"]
     elif set == "responsiveness":
         metrics = ["R", "r"]
     elif set == "VS":

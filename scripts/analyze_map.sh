@@ -101,25 +101,21 @@ echo ... culling the results ...
 ../../scripts/cull_results.py $xx $yy $e5
 ../../scripts/cull_results.py $xx $yy $e6
 
-echo ... sort districts by v_i ...
-
-../../scripts/sort_csv.sh _$xx$yy-composite-vi-points-BY_CD.csv _$xx$yy-composite-vi-points-BY_vi.csv
-../../scripts/sort_csv.sh _$xx$yy-$e1-vi-points-BY_CD.csv _$xx$yy-$e1-vi-points-BY_vi.csv
-../../scripts/sort_csv.sh _$xx$yy-$e2-vi-points-BY_CD.csv _$xx$yy-$e2-vi-points-BY_vi.csv
-../../scripts/sort_csv.sh _$xx$yy-$e3-vi-points-BY_CD.csv _$xx$yy-$e3-vi-points-BY_vi.csv
-../../scripts/sort_csv.sh _$xx$yy-$e4-vi-points-BY_CD.csv _$xx$yy-$e4-vi-points-BY_vi.csv
-../../scripts/sort_csv.sh _$xx$yy-$e5-vi-points-BY_CD.csv _$xx$yy-$e5-vi-points-BY_vi.csv
-../../scripts/sort_csv.sh _$xx$yy-$e6-vi-points-BY_CD.csv _$xx$yy-$e6-vi-points-BY_vi.csv
+echo ... districts implicitly sorted by id ...
 
 echo ... combining individual election files ...
 
 paste -d "," _$xx$yy-composite-metrics.csv _$xx$yy-$e1-metrics.csv _$xx$yy-$e2-metrics.csv _$xx$yy-$e3-metrics.csv _$xx$yy-$e4-metrics.csv _$xx$yy-$e5-metrics.csv _$xx$yy-$e6-metrics.csv > _$xx$yy-metrics-RAW.csv
 paste -d "," _$xx$yy-composite-SV-points.csv _$xx$yy-$e1-SV-points.csv _$xx$yy-$e2-SV-points.csv _$xx$yy-$e3-SV-points.csv _$xx$yy-$e4-SV-points.csv _$xx$yy-$e5-SV-points.csv _$xx$yy-$e6-SV-points.csv > _$xx$yy-SV-points-RAW.csv
-paste -d "," _$xx$yy-composite-vi-points-BY_vi.csv _$xx$yy-$e1-vi-points-BY_vi.csv _$xx$yy-$e2-vi-points-BY_vi.csv _$xx$yy-$e3-vi-points-BY_vi.csv _$xx$yy-$e4-vi-points-BY_vi.csv _$xx$yy-$e5-vi-points-BY_vi.csv _$xx$yy-$e6-vi-points-BY_vi.csv > _$xx$yy-vi-points-RAW.csv
+paste -d "," _$xx$yy-composite-vi-points-BY_CD.csv _$xx$yy-$e1-vi-points-BY_CD.csv _$xx$yy-$e2-vi-points-BY_CD.csv _$xx$yy-$e3-vi-points-BY_CD.csv _$xx$yy-$e4-vi-points-BY_CD.csv _$xx$yy-$e5-vi-points-BY_CD.csv _$xx$yy-$e6-vi-points-BY_CD.csv > _$xx$yy-vi-points-RAW.csv
 
 cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-metrics-RAW.csv > _$xx$yy-metrics.csv
 cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-SV-points-RAW.csv > _$xx$yy-SV-points.csv
-cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-vi-points-RAW.csv > _$xx$yy-vi-points.csv
+cut -d "," -f 1,2,4,6,8,10,12,14 _$xx$yy-vi-points-RAW.csv > _$xx$yy-vi-points-UNSORTED.csv
+
+echo ... sort districts by v_i ...
+
+../../scripts/sort_csv.sh _$xx$yy-vi-points-UNSORTED.csv _$xx$yy-vi-points.csv
 
 echo ... calculating statistics ...
 

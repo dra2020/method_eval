@@ -50,10 +50,10 @@ try:
 
     Sf = s["bias"]["estSf"]
 
-    avgDWin = s["averageDVf"]
-    avgRWin = s["averageRVf"]
-    decl = s["bias"]["decl"]
-    rvPoints = s["bias"]["rvPoints"]
+    avgDWin = s["averageDVf"] if "averageDVf" in s else None
+    avgRWin = s["averageRVf"] if "averageRVf" in s else None
+    decl = s["bias"]["decl"] if "decl" in s["bias"] else None
+    rvPoints = s["bias"]["rvPoints"] if "rvPoints" in s["bias"] else None
 
     # Read the SV-points file w/ stats
 

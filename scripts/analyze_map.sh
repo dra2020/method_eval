@@ -11,7 +11,7 @@
 # Sample states:
 #
 # scripts/analyze_map.sh AL 2022 P2020 P2016 S2020 S2017 G2018 AG2018 <<<
-# scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< BAD 
+# scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< REVIEW - LO & DECL undefined for all
 # scripts/analyze_map.sh AZ 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<<
 # scripts/analyze_map.sh CO 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<<
 # scripts/analyze_map.sh CT 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< BAD

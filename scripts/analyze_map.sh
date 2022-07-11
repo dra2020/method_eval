@@ -8,52 +8,38 @@
 # - finally producing statistics files for metrics, the S(V) curve & r(v) points, and 
 # - district-by-district vote shares.
 #
-# $ scripts/analyze_map.sh AL 2022 P2020 P2016 S2020 S2017 G2018 AG2018
-# $ scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh AZ 2022 P2020 P2016 S2020 S2018 G2018 AG2018
-# $ scripts/analyze_map.sh CA 2022 P2020 P2016             G2018 AG2018
-# $ scripts/analyze_map.sh CO 2022 P2020 P2016 S2020 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh CT 2022 P2020 P2016 S2018 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh FL 2022 P2020 P2016 S2018 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh GA 2022 P2020 P2016 S2020 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh HI 2022 P2020 P2016 S2018 S2016 G2018       
-# $ scripts/analyze_map.sh IA 2022 P2020 P2016 S2020 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh ID 2022 P2020 P2016 S2020 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh IL 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<<
-# $ scripts/analyze_map.sh IN 2022 P2020 P2016 S2018 S2016 G2020 AG2020
-# $ scripts/analyze_map.sh KS 2022 P2020 P2016 S2020 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh KY 2022       P2016 S2016       G2019 AG2019
-# $ scripts/analyze_map.sh LA 2022 P2020 P2016 S2020 S2016 G2019 AG2019
-# $ scripts/analyze_map.sh MA 2022 P2020 P2016 S2020 S2018 G2018 AG2018
-# $ scripts/analyze_map.sh MD 2022 P2020 P2016 S2018 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh ME 2022 P2020 P2016 S2020       G2018       
-# $ scripts/analyze_map.sh MI 2022 P2020 P2016 S2020 S2018 G2018 AG2018
-# $ scripts/analyze_map.sh MN 2022 P2020 P2016 S2020 S2018 G2018 AG2018
-# $ scripts/analyze_map.sh MO 2022 P2020 P2016 S2018 S2016 G2020 AG2020
-# $ scripts/analyze_map.sh MS 2022 P2020 P2016 S2020 S2018 G2019 AG2019
-# $ scripts/analyze_map.sh MT 2022 P2020 P2016 S2020 S2018 G2020 AG2020
-# $ scripts/analyze_map.sh NC 2022 P2020 P2016 S2020 S2016 G2020 AG2020 <<<
-# $ scripts/analyze_map.sh NE 2022 P2020 P2016 S2020 S2018 G2018 AG2018
-# $ scripts/analyze_map.sh NH 2022 P2020 P2016 S2020 S2016 G2020       
-# $ scripts/analyze_map.sh NJ 2022 P2020 P2016 S2020 S2018 G2017       
-# $ scripts/analyze_map.sh NM 2022 P2020 P2016 S2020 S2018 G2018 AG2018
-# $ scripts/analyze_map.sh NV 2022 P2020 P2016 S2018 S2016 G2020       
-# $ scripts/analyze_map.sh NY 2022 P2020 P2016 S2020 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh OH 2022 P2020 P2016 S2018 S2016 G2018 AG2018
-# $ scripts/analyze_map.sh OK 2022 P2020 P2016 S2018 S2016 G2018 AG2018 
-# $ scripts/analyze_map.sh OR 2022 P2020 P2016 S2020 S2016 G2018 AG2020 
-# $ scripts/analyze_map.sh PA 2022 P2020 P2016 S2018 S2016 G2018 AG2020 
-# $ scripts/analyze_map.sh RI 2022 P2020 P2016 S2020 S2018 G2018 AG2018 
-# $ scripts/analyze_map.sh SC 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<<
-# $ scripts/analyze_map.sh TN 2022 P2020 P2016 S2020 S2018 G2018       
-# $ scripts/analyze_map.sh TX 2022 P2020 P2016 S2020 S2018 G2018 AG2018
-# $ scripts/analyze_map.sh UT 2022 P2020 P2012 S2018 S2016 G2020 AG2020
-# $ scripts/analyze_map.sh VA 2022 P2020 P2016 S2020 S2018 G2021 AG2021
-# $ scripts/analyze_map.sh WA 2022 P2020 P2016 S2018 S2016 G2020 AG2020 
-# $ scripts/analyze_map.sh WI 2022 P2020 P2016 S2018 S2016 G2018 AG2018 
-# $ scripts/analyze_map.sh WV 2022 P2020 P2012                         
+# Sample states:
 #
-# AK, DE, ND, SD, VT, and WY each have only one congressional district.
+# scripts/analyze_map.sh AL 2022 P2020 P2016 S2020 S2017 G2018 AG2018 <<<
+# scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< BAD 
+# scripts/analyze_map.sh AZ 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<<
+# scripts/analyze_map.sh CO 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<<
+# scripts/analyze_map.sh CT 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< BAD
+# scripts/analyze_map.sh FL 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<<
+# scripts/analyze_map.sh GA 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<<
+# scripts/analyze_map.sh IA 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< BAD
+# scripts/analyze_map.sh IL 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< DONE
+# scripts/analyze_map.sh IN 2022 P2020 P2016 S2018 S2016 G2020 AG2020 <<< 
+# scripts/analyze_map.sh KS 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< BAD
+# scripts/analyze_map.sh LA 2022 P2020 P2016 S2020 S2016 G2019 AG2019 <<<  
+# scripts/analyze_map.sh MA 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< BAD
+# scripts/analyze_map.sh MD 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<<
+# scripts/analyze_map.sh MI 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< 
+# scripts/analyze_map.sh MN 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<<
+# scripts/analyze_map.sh MO 2022 P2020 P2016 S2018 S2016 G2020 AG2020 <<<
+# scripts/analyze_map.sh MS 2022 P2020 P2016 S2020 S2018 G2019 AG2019 <<< BAD
+# scripts/analyze_map.sh NC 2022 P2020 P2016 S2020 S2016 G2020 AG2020 <<< DONE
+# scripts/analyze_map.sh NM 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< BAD
+# scripts/analyze_map.sh NV 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< BAD     
+# scripts/analyze_map.sh NY 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< LO & DECL undefined
+# scripts/analyze_map.sh OH 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<<
+# scripts/analyze_map.sh OK 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< BAD
+# scripts/analyze_map.sh OR 2022 P2020 P2016 S2020 S2016 G2018 AG2020 <<< LO & DECL undefined
+# scripts/analyze_map.sh PA 2022 P2020 P2016 S2018 S2016 G2018 AG2020 <<<
+# scripts/analyze_map.sh SC 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< DONE
+# scripts/analyze_map.sh TX 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<<
+# scripts/analyze_map.sh WA 2022 P2020 P2016 S2018 S2016 G2020 AG2020 <<< 
+# scripts/analyze_map.sh WI 2022 P2020 P2016 S2018 S2016 G2018 AG2018 
 
 xx=$1
 yy=$2

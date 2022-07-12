@@ -11,30 +11,30 @@
 # Sample states:
 #
 # scripts/analyze_map.sh AL 2022 P2020 P2016 S2020 S2017 G2018 AG2018 <<<
-# scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< REVIEW - LO & DECL undefined for all
+# scripts/analyze_map.sh AR 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< DONE - LO & DECL undefined for all
 # scripts/analyze_map.sh AZ 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<<
 # scripts/analyze_map.sh CO 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<<
-# scripts/analyze_map.sh CT 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< BAD
+# scripts/analyze_map.sh CT 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< LO & DECL undefined for all
 # scripts/analyze_map.sh FL 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<<
 # scripts/analyze_map.sh GA 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<<
-# scripts/analyze_map.sh IA 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< BAD
+# scripts/analyze_map.sh IA 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< BAD - GAMMA | LO & DECL undefined for all
 # scripts/analyze_map.sh IL 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< DONE
 # scripts/analyze_map.sh IN 2022 P2020 P2016 S2018 S2016 G2020 AG2020 <<< 
-# scripts/analyze_map.sh KS 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< BAD
+# scripts/analyze_map.sh KS 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< LO & DECL undefined for all
 # scripts/analyze_map.sh LA 2022 P2020 P2016 S2020 S2016 G2019 AG2019 <<<  
-# scripts/analyze_map.sh MA 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< BAD
+# scripts/analyze_map.sh MA 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< LO & DECL undefined for all
 # scripts/analyze_map.sh MD 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<<
 # scripts/analyze_map.sh MI 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< 
 # scripts/analyze_map.sh MN 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<<
 # scripts/analyze_map.sh MO 2022 P2020 P2016 S2018 S2016 G2020 AG2020 <<<
-# scripts/analyze_map.sh MS 2022 P2020 P2016 S2020 S2018 G2019 AG2019 <<< BAD
+# scripts/analyze_map.sh MS 2022 P2020 P2016 S2020 S2018 G2019 AG2019 <<< LO & DECL undefined for all
 # scripts/analyze_map.sh NC 2022 P2020 P2016 S2020 S2016 G2020 AG2020 <<< DONE
-# scripts/analyze_map.sh NM 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< BAD
-# scripts/analyze_map.sh NV 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< BAD     
-# scripts/analyze_map.sh NY 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< LO & DECL undefined
+# scripts/analyze_map.sh NM 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<< LO & DECL undefined for all
+# scripts/analyze_map.sh NV 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< LO & DECL undefined for all
+# scripts/analyze_map.sh NY 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<< LO & DECL undefined *sometimes*
 # scripts/analyze_map.sh OH 2022 P2020 P2016 S2018 S2016 G2018 AG2018 <<<
-# scripts/analyze_map.sh OK 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< BAD
-# scripts/analyze_map.sh OR 2022 P2020 P2016 S2020 S2016 G2018 AG2020 <<< LO & DECL undefined
+# scripts/analyze_map.sh OK 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< LO & DECL undefined for all
+# scripts/analyze_map.sh OR 2022 P2020 P2016 S2020 S2016 G2018 AG2020 <<< LO & DECL undefined *sometimes*
 # scripts/analyze_map.sh PA 2022 P2020 P2016 S2018 S2016 G2018 AG2020 <<<
 # scripts/analyze_map.sh SC 2022 P2020 P2016 S2020 S2016 G2018 AG2018 <<< DONE
 # scripts/analyze_map.sh TX 2022 P2020 P2016 S2020 S2018 G2018 AG2018 <<<

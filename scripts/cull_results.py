@@ -88,14 +88,14 @@ try:
 
     eG = s["bias"]["eG"]
     prop = s["bias"]["prop"]
-    gamma = s["bias"]["gamma"]
+    gamma = s["bias"]["gamma"] if "gamma" in s["bias"] else 0
 
     # Partisan symmetry
 
     bS50 = s["bias"]["bS50"]
     bV50 = s["bias"]["bV50"]
-    bSV = s["bias"]["bSV"]
-    gSym = s["bias"]["gSym"]
+    bSV = s["bias"]["bSV"] if "bSV" in s["bias"] else 0
+    gSym = s["bias"]["gSym"] if "gSym" in s["bias"] else 0
 
     # Gerrymandering
 
